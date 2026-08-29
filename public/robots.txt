@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Sitemap Index
+Sitemap: https://pericias.tecnobrain.ar/sitemap.xml
+Sitemap: https://estudiopericialsur.com.ar/sitemap.xml
