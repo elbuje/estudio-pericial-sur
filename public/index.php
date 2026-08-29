@@ -60,6 +60,40 @@ if ($path === 'sitemap.xml') {
     exit;
 }
 
+// Static file serving & download routes
+if (file_exists(__DIR__ . '/' . $path) && is_file(__DIR__ . '/' . $path) && !preg_match('/\.php$/i', $path)) {
+    $ext = pathinfo($path, PATHINFO_EXTENSION);
+    $mimes = [
+        'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'pdf'  => 'application/pdf',
+        'jpg'  => 'image/jpeg',
+        'jpeg' => 'image/jpeg',
+        'png'  => 'image/png',
+        'webp' => 'image/webp',
+        'css'  => 'text/css',
+        'js'   => 'application/javascript',
+        'xml'  => 'application/xml',
+        'txt'  => 'text/plain',
+    ];
+    $contentType = $mimes[strtolower($ext)] ?? mime_content_type(__DIR__ . '/' . $path);
+    header('Content-Type: ' . $contentType);
+    header('Content-Length: ' . filesize(__DIR__ . '/' . $path));
+    readfile(__DIR__ . '/' . $path);
+    exit;
+}
+
+if ($path === 'descargar-informe' || $path === 'informe-word') {
+    $doc_file = __DIR__ . '/INFORME_TECNICO_Y_COMERCIAL_ESTUDIO_PERICIAL_SUR.docx';
+    if (file_exists($doc_file)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        header('Content-Disposition: attachment; filename="INFORME_TECNICO_Y_COMERCIAL_ESTUDIO_PERICIAL_SUR.docx"');
+        header('Content-Length: ' . filesize($doc_file));
+        readfile($doc_file);
+        exit;
+    }
+}
+
 // Dispatch route
 if (isset($routes[$path])) {
     require $routes[$path];
