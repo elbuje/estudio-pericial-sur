@@ -29,19 +29,25 @@ function get_evento_wa($msg = '') {
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="<?= htmlspecialchars($canonical_url) ?>">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / WhatsApp Preview -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
   <meta property="og:site_name" content="Fede Nowback">
   <meta property="og:title" content="<?= htmlspecialchars($page_title) ?>">
   <meta property="og:description" content="<?= htmlspecialchars($page_desc) ?>">
   <meta property="og:url" content="<?= htmlspecialchars($canonical_url) ?>">
-  <meta property="og:image" content="<?= htmlspecialchars($og_image) ?>">
+  <meta property="og:image" content="<?= htmlspecialchars($og_image) ?>?v=3">
+  <meta property="og:image:secure_url" content="<?= htmlspecialchars($og_image) ?>?v=3">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="682">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="Encendé tu Fuego - Fede Nowback">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="<?= htmlspecialchars($page_title) ?>">
   <meta name="twitter:description" content="<?= htmlspecialchars($page_desc) ?>">
+  <meta name="twitter:image" content="<?= htmlspecialchars($og_image) ?>?v=3">
 
   <!-- Google Fonts: Montserrat (Tipografía con pegada y autoridad) + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
