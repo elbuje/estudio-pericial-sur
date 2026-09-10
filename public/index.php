@@ -17,6 +17,7 @@ $routes = [
     'terapia-en-contextos-judicializados' => __DIR__ . '/../views/terapia-en-contextos-judicializados.php',
     'red-de-derivacion-psicologica' => __DIR__ . '/../views/red-de-derivacion-psicologica.php',
     'orientacion-vocacional-y-ocupacional' => __DIR__ . '/../views/orientacion-vocacional-y-ocupacional.php',
+    'fedenowback' => __DIR__ . '/../views/fedenowback.php',
 ];
 
 // Redirecciones 301 de URLs antiguas si alguien accede
@@ -55,6 +56,12 @@ if ($path === 'sitemap.xml') {
     <priority>0.8</priority>
   </url>
   <?php endforeach; ?>
+  <url>
+    <loc><?= SITE_URL ?>/fedenowback</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
     <?php
     exit;
