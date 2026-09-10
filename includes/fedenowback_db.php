@@ -287,5 +287,29 @@ function fede_db_init_schema() {
         ]);
     }
 
+    // 13. Auto-sanitize legacy seed records if any exist
+    try {
+        $pdo->exec("
+            UPDATE `fede_users` 
+            SET `email` = 'alumno@fedenowback.com', 
+                `name` = 'Alumno Pro', 
+                `handle` = '@creador_pro' 
+            WHERE `email` = 'alumno@atrevidos.com' OR `name` LIKE '%Atrevido%';
+        ");
+        $pdo->exec("
+            UPDATE `fede_posts`
+            SET `title` = REPLACE(REPLACE(`title`, 'CAMPUS ATREVIDO', 'CAMPUS NOWBACK PRO'), 'Atrevido', 'Pro'),
+                `content` = REPLACE(REPLACE(REPLACE(`content`, '¡Atrevidos,', '¡Creadores,'), 'Atrevido', 'Pro'), 'atrevido', 'creador')
+            WHERE `title` LIKE '%Atrevid%' OR `content` LIKE '%Atrevid%';
+        ");
+        $pdo->exec("
+            UPDATE `fede_comments`
+            SET `content` = REPLACE(REPLACE(`content`, 'Atrevido', 'Pro'), 'atrevido', 'creador')
+            WHERE `content` LIKE '%Atrevid%';
+        ");
+    } catch (Exception $e) {
+        error_log('Fede DB legacy cleanup warning: ' . $e->getMessage());
+    }
+
     return true;
 }
