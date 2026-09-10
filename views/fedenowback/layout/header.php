@@ -66,7 +66,7 @@ function fede_wa($msg = '') {
           <li><a href="/fedenowback/evento-encende-tu-fuego" class="<?= $current_slug === 'evento' ? 'active' : '' ?>">🔥 Evento 12/09</a></li>
           <li><a href="/fedenowback/mentoria-marca-personal" class="<?= $current_slug === 'mentoria' ? 'active' : '' ?>">Mentoría 1a1</a></li>
           <li><a href="/fedenowback/como-dejar-de-postergar" class="<?= $current_slug === 'guia' ? 'active' : '' ?>">7 Reglas Metas</a></li>
-          <li><a href="/fedenowback/comunidad-mundo-de-atrevidos" class="<?= $current_slug === 'comunidad' ? 'active' : '' ?>">Comunidad</a></li>
+          <li><a href="/fedenowback/comunidad" class="<?= $current_slug === 'comunidad' ? 'active' : '' ?>">⚡ Campus & Comunidad</a></li>
         </ul>
       </nav>
 

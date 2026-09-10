@@ -1,6 +1,6 @@
 <?php
 /**
- * CAMPUS ATREVIDO — Vista Principal de Comunidad & Academia
+ * CAMPUS FEDE NOWBACK PRO — Vista Principal de Comunidad & Academia
  * Fede Nowback | Plataforma Propia en Modo Día
  */
 
@@ -9,7 +9,7 @@ require_once __DIR__ . '/../../includes/fedenowback_community_store.php';
 
 $user = &$_SESSION['fede_user'];
 $data = fede_load_community_data();
-$page_title = "Campus Atrevido | Comunidad Oficial & Academia — Fede Nowback";
+$page_title = "Campus Fede Nowback Pro | Comunidad Oficial & Academia — Fede Nowback";
 $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores. Cursos de marca personal, mentorías grupales en vivo, debates y ranking.";
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
-  <!-- CSS Custom Campus Atrevido -->
+  <!-- CSS Custom Campus Fede Nowback Pro -->
   <link rel="stylesheet" href="/assets/css/fedenowback-campus.css?v=1.0">
 </head>
 <body>
@@ -41,7 +41,7 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
         <a href="/fedenowback/comunidad" class="campus-brand-area">
           <div class="campus-logo-badge">🔥</div>
           <div class="campus-brand-titles">
-            <span class="campus-brand-main">CAMPUS ATREVIDO <span style="font-size: 0.72rem; background: var(--c-fire-light); color: var(--c-fire-primary); padding: 2px 6px; border-radius: 4px; font-weight: 800;">PRO</span></span>
+            <span class="campus-brand-main">CAMPUS NOWBACK <span style="font-size: 0.72rem; background: var(--c-fire-light); color: var(--c-fire-primary); padding: 2px 6px; border-radius: 4px; font-weight: 800;">PRO</span></span>
             <span class="campus-brand-sub">Por Fede Nowback • <?= count($data['members']) + 338 ?> Miembros</span>
           </div>
         </a>
@@ -73,8 +73,11 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
           <!-- User Avatar -->
           <img src="<?= htmlspecialchars($user['avatar']) ?>" alt="<?= htmlspecialchars($user['name']) ?>" class="campus-user-avatar" title="<?= htmlspecialchars($user['name']) ?> (<?= htmlspecialchars($user['level_name']) ?>)">
 
-          <a href="/fedenowback" class="btn-reaction" style="font-size: 0.78rem; text-decoration: none;" title="Volver al Sitio Web Principal">
-            🌐 Sitio Web
+          <!-- High Visibility Website Button -->
+          <a href="/fedenowback" class="campus-btn-website" title="Ir al Sitio Web Oficial de Fede Nowback">
+            <span>🌐</span>
+            <span>Sitio Web Oficial</span>
+            <span class="campus-website-badge">Principal ↗</span>
           </a>
         </div>
 
@@ -93,6 +96,7 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
         <li><a class="campus-nav-item" data-tab="leaderboard">🏆 Ranking de Fuego</a></li>
         <li><a class="campus-nav-item" data-tab="members">👥 Miembros</a></li>
         <li><a class="campus-nav-item" data-tab="about">ℹ️ Acerca del Campus</a></li>
+        <li style="margin-left: auto;"><a href="/fedenowback" class="campus-nav-item" style="color: #0284c7; font-weight: 800; border: 1px solid rgba(2, 132, 199, 0.3); background: rgba(2, 132, 199, 0.08); border-radius: var(--c-radius-full); padding: 8px 16px;">🌐 Ir al Sitio Web Principal ↗</a></li>
       </ul>
     </div>
   </nav>
@@ -240,7 +244,7 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
 
             <!-- Mini Leaderboard Widget -->
             <div class="sidebar-widget">
-              <div class="widget-title">🏆 Top Atrevidos de la Semana</div>
+              <div class="widget-title">🏆 Top Creadores de la Semana</div>
               <div style="display: flex; flex-direction: column; gap: 10px;">
                 <?php foreach (array_slice($data['leaderboard'], 0, 4) as $item): ?>
                   <div style="display: flex; align-items: center; justify-content: space-between;">
@@ -512,7 +516,7 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
           
           <div style="text-align: center; margin-bottom: 32px;">
             <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--c-fire-primary); letter-spacing: 0.05em;">SISTEMA DE GAMIFICACIÓN</span>
-            <h2 style="font-family: var(--c-font-head); font-size: 1.8rem; font-weight: 900; margin-top: 4px;">🏆 Ranking de Fuego & Rangos Atrevidos</h2>
+            <h2 style="font-family: var(--c-font-head); font-size: 1.8rem; font-weight: 900; margin-top: 4px;">🏆 Ranking de Fuego & Niveles de Creadores</h2>
             <p style="color: var(--c-text-muted); font-size: 0.95rem; max-width: 600px; margin: 8px auto 0;">
               Ganá <strong>Fuego (Puntos)</strong> cada vez que publicás aportes, recibís likes de la comunidad y completás lecciones en la Academia para desbloquear mentorías VIP.
             </p>
@@ -597,9 +601,9 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
       <section id="tab-about" class="campus-tab-pane" style="display: none;">
         <div style="max-width: 800px; margin: 0 auto;">
           <div class="campus-card">
-            <h2 style="font-family: var(--c-font-head); font-size: 1.6rem; font-weight: 900; margin-bottom: 12px;">🔥 Acerca de Campus Atrevido</h2>
+            <h2 style="font-family: var(--c-font-head); font-size: 1.6rem; font-weight: 900; margin-bottom: 12px;">🔥 Acerca de Campus Fede Nowback Pro</h2>
             <p style="color: var(--c-text-sub); line-height: 1.7; font-size: 0.98rem; margin-bottom: 20px;">
-              Campus Atrevido es el centro de formación y comunidad privada creado por <strong>Fede Nowback</strong> para emprendedores, consultores y creadores que buscan construir una marca personal con intención de venta, alta autoridad y ejecución constante.
+              Campus Fede Nowback Pro es el centro de formación y comunidad privada creado por <strong>Fede Nowback</strong> para emprendedores, consultores y creadores que buscan construir una marca personal con intención de venta, alta autoridad y ejecución constante.
             </p>
 
             <h3 style="font-family: var(--c-font-head); font-size: 1.15rem; font-weight: 800; margin-bottom: 10px;">Pilares del Campus:</h3>
@@ -614,7 +618,7 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
                 <div style="font-weight: 800; font-size: 0.95rem;">¿Tenés dudas o necesitás soporte?</div>
                 <div style="font-size: 0.82rem; color: var(--c-text-muted);">Escribí directo a Fede por WhatsApp (+54 9 11 3820-5570)</div>
               </div>
-              <a href="https://wa.me/5491138205570?text=Hola%20Fede,%20tengo%20una%20consulta%20sobre%20el%20Campus%20Atrevido" target="_blank" rel="noopener noreferrer" class="btn-post-submit" style="text-decoration: none;">
+              <a href="https://wa.me/5491138205570?text=Hola%20Fede,%20tengo%20una%20consulta%20sobre%20el%20Campus%20Fede%20Nowback" target="_blank" rel="noopener noreferrer" class="btn-post-submit" style="text-decoration: none;">
                 💬 WhatsApp
               </a>
             </div>
@@ -655,8 +659,8 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
               <button type="button" class="btn-reaction" style="width: 100%; justify-content: center; font-size: 0.82rem;" onclick="document.getElementById('loginEmailInput').value='mfmujic@gmail.com'; document.getElementById('loginPasswordInput').value='marcelito';">
                 👑 Cargar Admin (mfmujic@gmail.com)
               </button>
-              <button type="button" class="btn-reaction" style="width: 100%; justify-content: center; font-size: 0.82rem;" onclick="document.getElementById('loginEmailInput').value='alumno@atrevidos.com'; document.getElementById('loginPasswordInput').value='alumno123';">
-                👤 Cargar Alumno (alumno@atrevidos.com)
+              <button type="button" class="btn-reaction" style="width: 100%; justify-content: center; font-size: 0.82rem;" onclick="document.getElementById('loginEmailInput').value='alumno@fedenowback.com'; document.getElementById('loginPasswordInput').value='alumno123';">
+                👤 Cargar Alumno (alumno@fedenowback.com)
               </button>
             </div>
           </form>

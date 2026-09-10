@@ -1,6 +1,6 @@
 /**
- * CAMPUS ATREVIDO — Interactive Client Controller
- * Fede Nowback Community & Academy
+ * CAMPUS FEDE NOWBACK PRO — Interactive Client Controller
+ * Lightweight Vanilla JS Controller with AJAX Sync
  */
 
 document.addEventListener('DOMContentLoaded', () => {

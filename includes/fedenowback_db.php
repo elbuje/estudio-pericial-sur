@@ -1,6 +1,6 @@
 <?php
 /**
- * CAMPUS ATREVIDO — MySQL Database Connection & ORM Layer
+ * CAMPUS FEDE NOWBACK — MySQL Database Connection & ORM Layer
  * Dedicated database management for Fede Nowback Platform
  */
 
@@ -215,7 +215,7 @@ function fede_db_init_schema() {
             '@fedenowback',
             '/assets/img/fedenowback/fede_nowback_fuego.jpg',
             'admin',
-            'Estratega de Marca Personal & Mentor de Negocios Digitales. Administrador del Campus Atrevido.',
+            'Estratega de Marca Personal & Mentor de Negocios Digitales. Administrador del Campus Fede Nowback Pro.',
             9999,
             5,
             '👑 MENTOR & HOST'
@@ -223,10 +223,10 @@ function fede_db_init_schema() {
 
         // Seed Default Student User
         $insert->execute([
-            'alumno@atrevidos.com',
+            'alumno@fedenowback.com',
             password_hash('alumno123', PASSWORD_BCRYPT),
-            'Alumno Atrevido',
-            '@atrevido_pro',
+            'Alumno Pro',
+            '@creador_pro',
             'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
             'member',
             'Creador de contenido y emprendedor digital en formación.',
@@ -266,8 +266,8 @@ function fede_db_init_schema() {
         $insert_post->execute([
             $admin_id,
             'comunicados',
-            '🔥 BIENVENIDA AL CAMPUS ATREVIDO: Cómo monetizar tu marca desde cero',
-            "¡Atrevidos, bienvenidos a nuestro Campus Oficial en MySQL!\n\nEste es el espacio donde los creadores vienen a ejecutar, a corregir en público y a facturar con su marca personal.\n\nReglas clave:\n1. Cada like que recibís en tus posts o respuestas te suma FUEGO para desbloquear masterclasses en la Academia.\n2. Los Viernes 19:00 hs tenemos nuestro Meet en Vivo donde abro micrófonos para Hot Seats en directo.\n3. Si lograste una venta, compartilo en #Victorias para inspirar al resto.\n\nDejá un comentario abajo presentándote: quién sos, qué vendés y tu meta de este mes."
+            '🔥 BIENVENIDA AL CAMPUS: Cómo monetizar tu marca desde cero',
+            "¡Creadores y emprendedores, bienvenidos a nuestro Campus Oficial en MySQL!\n\nEste es el espacio donde los creadores vienen a ejecutar, a corregir en público y a facturar con su marca personal.\n\nReglas clave:\n1. Cada like que recibís en tus posts o respuestas te suma FUEGO para desbloquear masterclasses en la Academia.\n2. Los Viernes 19:00 hs tenemos nuestro Meet en Vivo donde abro micrófonos para Hot Seats en directo.\n3. Si lograste una venta, compartilo en #Victorias para inspirar al resto.\n\nDejá un comentario abajo presentándote: quién sos, qué vendés y tu meta de este mes."
         ]);
 
         // Seed Meet

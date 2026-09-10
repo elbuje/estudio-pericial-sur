@@ -1,6 +1,6 @@
 <?php
 /**
- * Campus Atrevido - Store & Data Management Layer
+ * Campus Fede Nowback Pro - Store & Data Management Layer
  * Fede Nowback Community Platform
  */
 
@@ -21,9 +21,9 @@ define('FEDE_ADMIN_PASSWORD_HASH', '$2y$10$JTe0nSMklYpYmJ9WWfu9D..9pa2As0cr7A8dw
 if (!isset($_SESSION['fede_user'])) {
     $_SESSION['fede_user'] = [
         'id' => 'user_' . substr(md5(session_id()), 0, 8),
-        'email' => 'alumno@atrevidos.com',
-        'name' => 'Alumno Atrevido',
-        'handle' => '@atrevido_pro',
+        'email' => 'alumno@fedenowback.com',
+        'name' => 'Alumno Pro',
+        'handle' => '@creador_pro',
         'avatar' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
         'role' => 'member', // 'admin' or 'member'
         'is_logged_in' => true,
@@ -71,13 +71,13 @@ function fede_get_level_info($points) {
 function fede_get_default_community_data() {
     return [
         'group' => [
-            'name' => 'Campus Atrevido',
+            'name' => 'Campus Nowback Pro',
             'subtitle' => 'Comunidad Oficial & Academia de Fede Nowback',
             'host' => 'Fede Nowback',
             'members_count' => 342,
             'online_count' => 28,
             'description' => 'Espacio de alto rendimiento para creadores, profesionales y emprendedores que quieren monetizar su conocimiento, vencer la procrastinación y construir una marca personal imparable.',
-            'cover_image' => '/assets/img/fedenowback/fede_nowback_rooftop.jpg',
+            'cover_image' => '/assets/img/fedenowback/fede_nowback_hero.jpg',
             'avatar' => '/assets/img/fedenowback/fede_nowback_fuego.jpg'
         ],
         'categories' => [
@@ -104,7 +104,7 @@ function fede_get_default_community_data() {
                     'badge' => '👑 HOST'
                 ],
                 'title' => '🔥 BIENVENIDA AL CAMPUS: Cómo aprovechar esta comunidad para despegar tu marca',
-                'content' => "¡Atrevidos, bienvenidos a nuestro Campus!\n\nEste no es un grupo pasivo más. Acá venimos a ejecutar, a corregir en público y a facturar con nuestra marca personal.\n\nReglas clave para sacarle el 100% de jugo:\n1. Cada like que recibís en tus posts o respuestas te suma FUEGO (puntos) para desbloquear nuevas masterclasses en la Academia.\n2. Los Viernes 19:00 hs tenemos nuestro Meet en Vivo donde abro micrófonos para hacer Hot Seats y auditar cuentas en directo.\n3. Si lograste una venta o publicaste un reel que traccionó, compartilo en #Victorias para inspirar al resto.\n\nDejá un comentario abajo presentándote: quién sos, qué vendés y cuál es tu meta este mes.",
+                'content' => "¡Creadores y emprendedores, bienvenidos a nuestro Campus!\n\nEste no es un grupo pasivo más. Acá venimos a ejecutar, a corregir en público y a facturar con nuestra marca personal.\n\nReglas clave para sacarle el 100% de jugo:\n1. Cada like que recibís en tus posts o respuestas te suma FUEGO (puntos) para desbloquear nuevas masterclasses en la Academia.\n2. Los Viernes 19:00 hs tenemos nuestro Meet en Vivo donde abro micrófonos para hacer Hot Seats y auditar cuentas en directo.\n3. Si lograste una venta o publicaste un reel que traccionó, compartilo en #Victorias para inspirar al resto.\n\nDejá un comentario abajo presentándote: quién sos, qué vendés y cuál es tu meta este mes.",
                 'likes' => 84,
                 'liked_by' => ['user_demo', 'user_1', 'user_2'],
                 'created_at' => 'Hace 2 horas',
@@ -159,7 +159,7 @@ function fede_get_default_community_data() {
                             'avatar' => '/assets/img/fedenowback/fede_nowback_fuego.jpg',
                             'level_name' => '👑 MENTOR & HOST'
                         ],
-                        'content' => '¡Eso es ser un ATREVIDO Gonzalo! Felicitaciones enormes. Te espero este viernes en el Meet para que cuentes los detalles del cierre.',
+                        'content' => '¡Eso es pasar a la ACCIÓN con todo Gonzalo! Felicitaciones enormes. Te espero este viernes en el Meet para que cuentes los detalles del cierre.',
                         'likes' => 24,
                         'created_at' => 'Hace 4 horas'
                     ]
@@ -205,7 +205,7 @@ function fede_get_default_community_data() {
                 'slug' => 'metodo-nowback',
                 'level_required' => 1,
                 'level_name' => 'Iniciado (Nivel 1)',
-                'thumbnail' => '/assets/img/fedenowback/fede_nowback_rooftop.jpg',
+                'thumbnail' => '/assets/img/fedenowback/fede_nowback_hero.jpg?v=2',
                 'description' => 'El sistema paso a paso para posicionar tu autoridad, definir tu nicho de alto valor y generar prospectos constantes en Instagram y TikTok.',
                 'total_lessons' => 8,
                 'duration' => '4h 30m',
@@ -348,7 +348,7 @@ function fede_get_default_community_data() {
                 'slug' => 'masterclasses-vip',
                 'level_required' => 4,
                 'level_name' => 'Creador Imparable (Nivel 4)',
-                'thumbnail' => '/assets/img/fedenowback/fede_nowback_rooftop.jpg',
+                'thumbnail' => '/assets/img/fedenowback/fede_nowback_mentor.jpg?v=2',
                 'description' => 'Archivo exclusivo de todas las mentorías grupales, análisis de casos de éxito y sesiones de Hot Seat en vivo.',
                 'total_lessons' => 12,
                 'duration' => '18h 00m',
@@ -366,7 +366,7 @@ function fede_get_default_community_data() {
                 'host' => 'Fede Nowback',
                 'platform' => 'Zoom Pro',
                 'zoom_url' => 'https://zoom.us/j/fedenowback-hotseat',
-                'google_cal_url' => 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mentoria+Grupal+Fede+Nowback&dates=20260918T220000Z/20260918T233000Z&details=Hot+Seat+en+Vivo+en+el+Campus+Atrevido&location=Zoom',
+                'google_cal_url' => 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mentoria+Grupal+Fede+Nowback&dates=20260918T220000Z/20260918T233000Z&details=Hot+Seat+en+Vivo+en+el+Campus+Fede+Nowback&location=Zoom',
                 'attendees' => 48
             ],
             [
@@ -414,7 +414,7 @@ function fede_get_default_community_data() {
             ['rank' => 2, 'name' => 'Gonzalo Rivas', 'avatar' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80', 'points' => 142, 'level' => 4, 'level_name' => 'Creador Imparable', 'badge' => '⚡ Rango 4', 'perk' => 'Desbloqueó Masterclass DMs'],
             ['rank' => 3, 'name' => 'Martín Benítez', 'avatar' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80', 'points' => 88, 'level' => 4, 'level_name' => 'Creador Imparable', 'badge' => '⚡ Rango 4', 'perk' => 'Desbloqueó Masterclass DMs'],
             ['rank' => 4, 'name' => 'Camila Valenzuela', 'avatar' => 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80', 'points' => 54, 'level' => 3, 'level_name' => 'Creadora Constante', 'badge' => '🚀 Rango 3', 'perk' => 'Desbloqueó Plantillas Reels'],
-            ['rank' => 5, 'name' => 'Alumno Atrevido (Tú)', 'avatar' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80', 'points' => 45, 'level' => 3, 'level_name' => 'Creador Constante', 'badge' => '🚀 Rango 3', 'perk' => 'Desbloqueó Plantillas Reels', 'is_current_user' => true],
+            ['rank' => 5, 'name' => 'Alumno Pro (Tú)', 'avatar' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80', 'points' => 45, 'level' => 3, 'level_name' => 'Creador Constante', 'badge' => '🚀 Rango 3', 'perk' => 'Desbloqueó Plantillas Reels', 'is_current_user' => true],
             ['rank' => 6, 'name' => 'Esteban Morales', 'avatar' => 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100&auto=format&fit=crop&q=80', 'points' => 38, 'level' => 3, 'level_name' => 'Creador Constante', 'badge' => '🚀 Rango 3', 'perk' => 'Desbloqueó Plantillas Reels'],
             ['rank' => 7, 'name' => 'Sofía Navarro', 'avatar' => 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80', 'points' => 19, 'level' => 2, 'level_name' => 'Accionadora', 'badge' => '🎯 Rango 2', 'perk' => 'Desbloqueó Mentalidad de Fuego'],
             ['rank' => 8, 'name' => 'Joaquín Castro', 'avatar' => 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=80', 'points' => 14, 'level' => 2, 'level_name' => 'Accionador', 'badge' => '🎯 Rango 2', 'perk' => 'Desbloqueó Mentalidad de Fuego'],

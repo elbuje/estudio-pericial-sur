@@ -1,6 +1,6 @@
 <?php
 /**
- * Campus Atrevido - MySQL AJAX API Controller
+ * Campus Fede Nowback Pro - MySQL AJAX API Controller
  * Secure endpoint handling community interactions backed by MySQL
  */
 
@@ -112,7 +112,7 @@ switch ($action) {
                 echo json_encode([
                     'success' => true,
                     'user' => $user,
-                    'message' => '¡Cuenta creada con éxito! Bienvenido al Campus Atrevido.'
+                    'message' => '¡Cuenta creada con éxito! Bienvenido al Campus Fede Nowback.'
                 ]);
                 exit;
             }

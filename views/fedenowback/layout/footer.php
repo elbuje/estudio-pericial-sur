@@ -25,7 +25,7 @@
             <li><a href="/fedenowback/evento-encende-tu-fuego">🔥 Evento Presencial "Encendé tu Fuego"</a></li>
             <li><a href="/fedenowback/mentoria-marca-personal">🎯 Mentoría 1 a 1 de Marca Personal</a></li>
             <li><a href="/fedenowback/como-dejar-de-postergar">⚡ 7 Reglas para Dejar de Postergar</a></li>
-            <li><a href="/fedenowback/comunidad-mundo-de-atrevidos">🚀 Comunidad Mundo de Atrevidos</a></li>
+            <li><a href="/fedenowback/comunidad">⚡ Campus & Comunidad Nowback</a></li>
           </ul>
         </div>
 

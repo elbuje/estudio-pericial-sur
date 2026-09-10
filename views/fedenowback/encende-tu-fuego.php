@@ -1003,15 +1003,15 @@ function get_evento_wa($msg = '') {
       <div class="sec-header">
         <span class="sec-tag">Tu Mentor</span>
         <h2 class="sec-title">Conocé a Fede Nowback</h2>
-        <p style="color: var(--f-muted);">+65.000 seguidores en redes • Creador de Mundo de Atrevidos</p>
+        <p style="color: var(--f-muted);">+65.000 seguidores en redes • Estratega de Marca Personal & Mentor de Negocios</p>
       </div>
 
       <div class="gallery-grid" style="margin-bottom: 36px;">
         <div class="gallery-item">
-          <img src="/assets/img/fedenowback/fede_nowback_rooftop.jpg" alt="Fede Nowback en terraza Radio VEO">
+          <img src="/assets/img/fedenowback/fede_nowback_hero.jpg" alt="Fede Nowback Estratega de Marca Personal">
           <div class="gallery-overlay">
             <strong style="color:#fff;">Fede Nowback</strong>
-            <span style="font-size:0.8rem; color:var(--f-yellow);">Conductor de Mundo de Atrevidos</span>
+            <span style="font-size:0.8rem; color:var(--f-yellow);">Estratega de Marca Personal</span>
           </div>
         </div>
 
@@ -1066,7 +1066,7 @@ function get_evento_wa($msg = '') {
           <ul class="who-list">
             <li>• Estás cansado de postergar proyectos y querés un plan de acción claro.</li>
             <li>• Querés superar el miedo al juicio ajeno y la vergüenza de mostrarte.</li>
-            <li>• Buscás rodearte de personas atrevidas con ganas de crecer.</li>
+            <li>• Buscás rodearte de personas enfocadas y con ganas de crecer.</li>
             <li>• Estás dispuesto a incomodarte para subir tu estándar de vida.</li>
           </ul>
         </div>

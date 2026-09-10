@@ -1,5 +1,5 @@
 /**
- * CAMPUS ATREVIDO — Fede Nowback Community Platform
+ * CAMPUS FEDE NOWBACK PRO — Fede Nowback Community Platform
  * Custom Light Mode Design System
  */
 
@@ -202,6 +202,43 @@ body {
 
 .campus-user-avatar:hover {
   border-color: var(--c-fire-primary);
+}
+
+/* Prominent Website Navigation Button */
+.campus-btn-website {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff !important;
+  font-family: var(--c-font-head);
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: var(--c-radius-full);
+  text-decoration: none !important;
+  border: 1px solid #334155;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.25);
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.campus-btn-website:hover {
+  background: linear-gradient(135deg, #ff5500 0%, #ff8800 100%);
+  border-color: #ff5500;
+  box-shadow: 0 4px 16px rgba(255, 85, 0, 0.4);
+  transform: translateY(-2px);
+  color: #ffffff !important;
+}
+
+.campus-btn-website .campus-website-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 /* Navigation Tabs Bar */

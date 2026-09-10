@@ -8,7 +8,7 @@
 $page_title = "Fede Nowback | Estrategia de Marca Personal, Mentalidad y Negocios Digitales";
 $page_desc = "Te enseño a monetizar tu conocimiento y escalar tu negocio con tu marca personal. Estrategia de contenidos, mentalidad, hábitos y ventas sin depender de la viralidad.";
 $canonical_url = "https://pericias.tecnobrain.ar/fedenowback";
-$og_image = "https://pericias.tecnobrain.ar/assets/img/fedenowback/fede_nowback_rooftop.jpg";
+$og_image = "https://pericias.tecnobrain.ar/assets/img/fedenowback/fede_nowback_hero.jpg";
 
 function get_fede_wa($msg = '') {
     if (empty($msg)) {
@@ -24,7 +24,7 @@ function get_fede_wa($msg = '') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($page_title) ?></title>
   <meta name="description" content="<?= htmlspecialchars($page_desc) ?>">
-  <meta name="keywords" content="fede nowback, marca personal, mentoría negocios digitales, creador de contenido, mundo de atrevidos, vender en instagram, monetizar redes, dejar de postergar">
+  <meta name="keywords" content="fede nowback, marca personal, mentoría negocios digitales, creador de contenido, vender en instagram, monetizar redes, dejar de postergar, clases youtube fedenowback">
   <meta name="author" content="Fede Nowback">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="<?= htmlspecialchars($canonical_url) ?>">
@@ -61,11 +61,12 @@ function get_fede_wa($msg = '') {
         "jobTitle": "Estratega de Marca Personal & Mentor de Negocios Digitales",
         "description": "Especialista en desarrollo de marca personal, creación de contenido con intención de compra y escalado de negocios para emprendedores y profesionales.",
         "url": "https://pericias.tecnobrain.ar/fedenowback",
-        "image": "https://pericias.tecnobrain.ar/assets/img/fedenowback/fede_nowback_rooftop.jpg",
+        "image": "https://pericias.tecnobrain.ar/assets/img/fedenowback/fede_nowback_hero.jpg",
         "sameAs": [
           "https://www.instagram.com/fedenowback/",
           "https://www.tiktok.com/@fedenowback",
-          "https://www.threads.com/@fedenowback"
+          "https://www.threads.com/@fedenowback",
+          "https://www.youtube.com/@fedenowback6170"
         ]
       },
       {
@@ -96,9 +97,10 @@ function get_fede_wa($msg = '') {
       <nav aria-label="Navegación principal">
         <ul class="fede-nav-links">
           <li><a href="#metodo">Metodología</a></li>
+          <li><a href="#sobre-fede">Mi Recorrido</a></li>
+          <li><a href="#youtube-videos" style="color: #ff4d4d; font-weight: 800;">▶️ Clases YouTube</a></li>
           <li><a href="#mentorias">Mentoría 1a1</a></li>
-          <li><a href="/fedenowback/comunidad" style="color: var(--fede-fire-orange); font-weight: 800;">⚡ Campus & Comunidad</a></li>
-          <li><a href="#sobre-fede">Sobre Fede</a></li>
+          <li><a href="/fedenowback/comunidad" style="color: var(--fede-fire-orange); font-weight: 800;">⚡ Campus Pro</a></li>
           <li><a href="/fedenowback/encende-tu-fuego" style="color: var(--fede-fire-yellow); font-weight: 800;">🔥 Evento 12/09</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
@@ -130,10 +132,10 @@ function get_fede_wa($msg = '') {
 
           <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px;">
             <a href="/fedenowback/comunidad" class="btn-fede-fire">
-              ⚡ Entrar al Campus Atrevido
+              ⚡ Entrar al Campus Nowback Pro
             </a>
-            <a href="/fedenowback/encende-tu-fuego" class="btn-fede-outline">
-              🔥 Ver Evento "Encendé tu Fuego"
+            <a href="#youtube-videos" class="btn-fede-outline" style="border-color: #ff4444; color: #fff;">
+              ▶️ Ver Clases en YouTube
             </a>
             <a href="<?= get_fede_wa('Hola Fede! Quiero postularme a una Mentoría 1 a 1 de Marca Personal.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede-outline">
               🚀 Mentoría 1 a 1
@@ -161,7 +163,7 @@ function get_fede_wa($msg = '') {
         <!-- Foto Principal -->
         <div style="position: relative;">
           <div style="border-radius: var(--fede-radius-xl); overflow: hidden; border: 2px solid var(--fede-border-fire); box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
-            <img src="/assets/img/fedenowback/fede_nowback_rooftop.jpg" alt="Fede Nowback Estratega de Marca Personal" style="width: 100%; height: auto; display: block;">
+            <img src="/assets/img/fedenowback/fede_nowback_hero.jpg" alt="Fede Nowback Estratega de Marca Personal" style="width: 100%; height: auto; display: block;">
           </div>
         </div>
 
@@ -260,6 +262,96 @@ function get_fede_wa($msg = '') {
     </div>
   </section>
 
+  <!-- YouTube Video Hub: Clases & Masterclasses -->
+  <section class="fede-section" id="youtube-videos">
+    <div class="fede-container">
+      <div class="fede-sec-header">
+        <span class="fede-sec-tag" style="background: rgba(229, 9, 20, 0.15); color: #ff4d4d; border-color: rgba(229, 9, 20, 0.35);">
+          ▶️ Canal Oficial de YouTube
+        </span>
+        <h2 class="fede-sec-title">Aprende con Fede en YouTube</h2>
+        <p class="fede-sec-desc">
+          Clases completas y prácticas para crear tu propio negocio desde cero, generar tus primeros USD 1.000 y comunicar con autoridad.
+        </p>
+      </div>
+
+      <!-- Visor de Video Principal -->
+      <div class="fede-video-player-container">
+        <div class="fede-video-responsive">
+          <iframe id="mainYtPlayer" src="https://www.youtube-nocookie.com/embed/NGmRSA8aWAk?rel=0&modestbranding=1" title="CÓMO CREAR MI PROPIO NEGOCIO | PASO A PASO" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Playlist Interactiva de Clases -->
+      <div class="fede-video-playlist">
+        
+        <div class="fede-video-card active" onclick="loadFedeVideo('NGmRSA8aWAk', this)">
+          <div class="fede-video-thumb-wrap">
+            <img src="https://img.youtube.com/vi/NGmRSA8aWAk/hqdefault.jpg" alt="Cómo crear mi propio negocio paso a paso">
+            <span class="fede-video-badge-play">▶ Video</span>
+          </div>
+          <div class="fede-video-card-title">CÓMO CREAR MI PROPIO NEGOCIO | PASO A PASO</div>
+          <span style="font-size: 0.78rem; color: var(--fede-fire-yellow); font-weight: 700;">⭐ Recomendado</span>
+        </div>
+
+        <div class="fede-video-card" onclick="loadFedeVideo('RDlGX8zYkQ8', this)">
+          <div class="fede-video-thumb-wrap">
+            <img src="https://img.youtube.com/vi/RDlGX8zYkQ8/hqdefault.jpg" alt="Generar tus primeros USD 1000">
+            <span class="fede-video-badge-play">▶ Masterclass</span>
+          </div>
+          <div class="fede-video-card-title">Clase: El paso a paso para generar tus primeros USD 1.000 (LIBERADA)</div>
+          <span style="font-size: 0.78rem; color: #10b981; font-weight: 700;">💰 Facturación</span>
+        </div>
+
+        <div class="fede-video-card" onclick="loadFedeVideo('civfV2xxrNE', this)">
+          <div class="fede-video-thumb-wrap">
+            <img src="https://img.youtube.com/vi/civfV2xxrNE/hqdefault.jpg" alt="Renuncié a mi trabajo para emprender">
+            <span class="fede-video-badge-play">▶ Historia</span>
+          </div>
+          <div class="fede-video-card-title">RENUNCIÉ A MI TRABAJO para EMPRENDER desde CERO | Lo que aprendí</div>
+          <span style="font-size: 0.78rem; color: var(--fede-fire-orange); font-weight: 700;">🔥 Reinvención</span>
+        </div>
+
+        <div class="fede-video-card" onclick="loadFedeVideo('7VNw5QxgJLc', this)">
+          <div class="fede-video-thumb-wrap">
+            <img src="https://img.youtube.com/vi/7VNw5QxgJLc/hqdefault.jpg" alt="Hacer contenido aunque tengas miedo de mostrarte">
+            <span class="fede-video-badge-play">▶ Video</span>
+          </div>
+          <div class="fede-video-card-title">Cómo Hacer Contenido para Redes Aunque Tengas Miedo de Mostrarte</div>
+          <span style="font-size: 0.78rem; color: #38bdf8; font-weight: 700;">🎬 Cámara & Foco</span>
+        </div>
+
+        <div class="fede-video-card" onclick="loadFedeVideo('CpVRIFUo-Io', this)">
+          <div class="fede-video-thumb-wrap">
+            <img src="https://img.youtube.com/vi/CpVRIFUo-Io/hqdefault.jpg" alt="Por qué no vendés en redes sociales">
+            <span class="fede-video-badge-play">▶ Estrategia</span>
+          </div>
+          <div class="fede-video-card-title">Por qué NO vendés en redes sociales (y cómo solucionarlo)</div>
+          <span style="font-size: 0.78rem; color: #ec4899; font-weight: 700;">⚡ Ventas Reales</span>
+        </div>
+
+        <div class="fede-video-card" onclick="loadFedeVideo('AfZtMCv2IX0', this)">
+          <div class="fede-video-thumb-wrap">
+            <img src="https://img.youtube.com/vi/AfZtMCv2IX0/hqdefault.jpg" alt="Cómo dejar de procrastinar">
+            <span class="fede-video-badge-play">▶ Acción</span>
+          </div>
+          <div class="fede-video-card-title">Cómo dejar de procrastinar y pasar a la acción (explicado fácil)</div>
+          <span style="font-size: 0.78rem; color: var(--fede-fire-yellow); font-weight: 700;">🧠 Mentalidad</span>
+        </div>
+
+      </div>
+
+      <!-- Botón al Canal -->
+      <div style="text-align: center; margin-top: 16px;">
+        <a href="https://www.youtube.com/@fedenowback6170" target="_blank" rel="noopener noreferrer" class="btn-fede-fire" style="background: linear-gradient(135deg, #e50914 0%, #b81d24 100%); border-color: #ff3333; display: inline-flex; align-items: center; gap: 8px;">
+          <span>🔴</span>
+          <span>Ver Más Videos en YouTube (@fedenowback6170)</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Programas & Servicios: Mentoría 1 a 1 y Comunidad -->
   <section class="fede-section" id="mentorias">
     <div class="fede-container">
@@ -278,27 +370,27 @@ function get_fede_wa($msg = '') {
           </div>
           <h3 class="fede-card-h3" style="font-size: 1.4rem;">Mentoría Privada 1 a 1</h3>
           <p class="fede-card-p">
-            Trabajo mano a mano conmigo durante 30 a 60 días para diseñar tu marca, desbloquear tu comunicación frente a la cámara y estructurar tu embudo de ventas.
+            Trabajo mano a mano conmigo para convertir lo que sabés, tu experiencia y tu historia en una marca personal que conecte, genere confianza y venda.
           </p>
           <ul style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.92rem; color: var(--fede-text-sub);">
             <li><strong style="color: #10b981;">✓</strong> Sesiones semanales individuales vía Zoom</li>
             <li><strong style="color: #10b981;">✓</strong> Auditoría total de tu bio, oferta y contenidos</li>
             <li><strong style="color: #10b981;">✓</strong> Creación de tus guiones de Reels y Carruseles</li>
-            <li><strong style="color: #10b981;">✓</strong> Soporte continuo y feedback por WhatsApp directo</li>
+            <li><strong style="color: #10b981;">✓</strong> Acompañamiento continuo y feedback por WhatsApp directo</li>
           </ul>
           <a href="<?= get_fede_wa('Hola Fede! Quiero postularme a la Mentoría 1 a 1 de Marca Personal.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede-fire" style="width: 100%; text-align: center;">
             💬 Postular a Mentoría 1 a 1
           </a>
         </div>
 
-        <!-- Comunidad Mundo de Atrevidos -->
+        <!-- Comunidad Oficial Fede Nowback -->
         <div class="fede-card" id="comunidad">
           <div style="background: rgba(255,255,255,0.1); color: #fff; font-family: var(--fede-font-heading); font-weight: 800; font-size: 0.75rem; padding: 3px 12px; border-radius: 9999px; display: inline-block; margin-bottom: 12px; text-transform: uppercase;">
             🚀 Networking & Clases
           </div>
-          <h3 class="fede-card-h3" style="font-size: 1.4rem;">Comunidad Mundo de Atrevidos</h3>
+          <h3 class="fede-card-h3" style="font-size: 1.4rem;">Comunidad & Campus Nowback</h3>
           <p class="fede-card-p">
-            El espacio para emprendedores y creadores que buscan rodearse de personas con su misma ambición. Clases en vivo, debates y motivación diaria.
+            El espacio para emprendedores y profesionales que buscan rodearse de personas con su misma ambición. Clases en vivo, debates y motivación diaria.
           </p>
           <ul style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.92rem; color: var(--fede-text-sub);">
             <li><strong style="color: #10b981;">✓</strong> Acceso al grupo exclusivo de emprendedores</li>
@@ -306,8 +398,11 @@ function get_fede_wa($msg = '') {
             <li><strong style="color: #10b981;">✓</strong> Desafíos semanales de grabación y exposición</li>
             <li><strong style="color: #10b981;">✓</strong> Conexiones con profesionales de diversas industrias</li>
           </ul>
-          <a href="<?= get_fede_wa('Hola Fede! Quiero unirme a la Comunidad Gratuita Mundo de Atrevidos.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede-outline" style="width: 100%; text-align: center;">
-            👥 Unirme Gratis a la Comunidad
+          <a href="/fedenowback/comunidad" class="btn-fede-outline" style="width: 100%; text-align: center; margin-bottom: 8px;">
+            ⚡ Entrar al Campus Pro
+          </a>
+          <a href="<?= get_fede_wa('Hola Fede! Quiero consultar sobre la Comunidad de Creadores y Emprendedores.') ?>" target="_blank" rel="noopener noreferrer" style="font-size: 0.85rem; color: var(--fede-fire-yellow); text-decoration: none; text-align: center; display: block;">
+            💬 O consultá por WhatsApp
           </a>
         </div>
 
@@ -315,33 +410,73 @@ function get_fede_wa($msg = '') {
     </div>
   </section>
 
-  <!-- Galería de Fotos Reales -->
+  <!-- Filosofía: Personas Reales, Procesos Reales -->
   <section class="fede-section" style="background: rgba(255,255,255,0.015);">
     <div class="fede-container">
       <div class="fede-sec-header">
-        <span class="fede-sec-tag">En Acción</span>
-        <h2 class="fede-sec-title">Fede Nowback en los Medios y Eventos</h2>
+        <span class="fede-sec-tag">Nuestra Filosofía</span>
+        <h2 class="fede-sec-title">Personas reales. Procesos reales. Acompañamiento real.</h2>
+        <p class="fede-sec-desc">Menos fórmulas mágicas. Más acompañamiento estratégico para que pases a la acción.</p>
       </div>
 
-      <div class="fede-gallery">
+      <div class="fede-grid-3">
+        <div class="fede-card">
+          <div class="fede-card-icon">🤝</div>
+          <h3 class="fede-card-h3">Detrás de cada negocio hay una persona</h3>
+          <p class="fede-card-p">No trabajo solamente el contenido. Trabajo con la persona que está detrás: su identidad, su mensaje, su comunicación, sus creencias y su capacidad de sostenerlo.</p>
+        </div>
+
+        <div class="fede-card">
+          <div class="fede-card-icon">🎯</div>
+          <h3 class="fede-card-h3">No necesitás ser influencer</h3>
+          <p class="fede-card-p">Necesitás aprender a comunicar el valor que ya tenés. Podés tener la mejor estrategia del mundo, pero si no te animás a mostrarte y comunicarlo, nadie va a descubrir tu valor.</p>
+        </div>
+
+        <div class="fede-card">
+          <div class="fede-card-icon">⚡</div>
+          <h3 class="fede-card-h3">No es una fórmula, es tu proceso</h3>
+          <p class="fede-card-p">No te doy una fórmula enlatada. Te acompaño a construir la tuya. Sin humo, con estrategia y acompañamiento de verdad porque tu proceso es único.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería de Fotos Reales (Sin marcas de agua, fotos nuevas) -->
+  <section class="fede-section">
+    <div class="fede-container">
+      <div class="fede-sec-header">
+        <span class="fede-sec-tag">En Acción</span>
+        <h2 class="fede-sec-title">Fede Nowback en Acción</h2>
+        <p class="fede-sec-desc">Más de 10 años creando contenidos, liderando proyectos y acompañando a referentes.</p>
+      </div>
+
+      <div class="fede-gallery" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
         <div class="fede-gallery-item">
-          <img src="/assets/img/fedenowback/fede_nowback_rooftop.jpg" alt="Fede Nowback terraza">
+          <img src="/assets/img/fedenowback/fede_nowback_hero.jpg" alt="Fede Nowback Estrategia de Marca Personal">
           <div class="fede-gallery-info">
             <strong style="color: #fff;">Fede Nowback</strong>
-            <span style="font-size: 0.8rem; color: var(--fede-fire-yellow);">Conductor en Radio VEO</span>
+            <span style="font-size: 0.8rem; color: var(--fede-fire-yellow);">Estrategia de Marca Personal</span>
           </div>
         </div>
 
         <div class="fede-gallery-item">
-          <img src="/assets/img/fedenowback/fede_nowback_fuego.jpg" alt="Fede Nowback fuego">
+          <img src="/assets/img/fedenowback/fede_nowback_street.jpg" alt="Fede Nowback en la ciudad">
           <div class="fede-gallery-info">
-            <strong style="color: #fff;">Mentalidad & Foco</strong>
-            <span style="font-size: 0.8rem; color: var(--fede-fire-yellow);">Encendé tu Fuego</span>
+            <strong style="color: #fff;">Producción & Eventos</strong>
+            <span style="font-size: 0.8rem; color: var(--fede-fire-yellow);">+10 Años en Medios & Comunicación</span>
           </div>
         </div>
 
         <div class="fede-gallery-item">
-          <img src="/assets/img/fedenowback/evento_encende_tu_fuego.jpg" alt="Flyer Evento Encende tu Fuego">
+          <img src="/assets/img/fedenowback/fede_nowback_mentor.jpg" alt="Fede Nowback Mentoría y Negocios">
+          <div class="fede-gallery-info">
+            <strong style="color: #fff;">Mentoría 1 a 1</strong>
+            <span style="font-size: 0.8rem; color: var(--fede-fire-yellow);">Acompañamiento Estratégico</span>
+          </div>
+        </div>
+
+        <div class="fede-gallery-item">
+          <img src="/assets/img/fedenowback/evento_encende_tu_fuego.jpg" alt="Flyer Evento Encendé tu Fuego">
           <div class="fede-gallery-info">
             <strong style="color: #fff;">Evento Presencial</strong>
             <span style="font-size: 0.8rem; color: var(--fede-fire-yellow);">12 de Septiembre en CABA</span>
@@ -351,26 +486,29 @@ function get_fede_wa($msg = '') {
     </div>
   </section>
 
-  <!-- Sobre Fede Historia -->
-  <section class="fede-section" id="sobre-fede">
+  <!-- Sobre Fede Historia & Recorrido Real -->
+  <section class="fede-section" id="sobre-fede" style="background: rgba(255,255,255,0.01);">
     <div class="fede-container">
-      <div style="background: var(--fede-bg-card); border: 1px solid var(--fede-border); border-radius: var(--fede-radius-xl); padding: 40px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 36px; align-items: center;">
+      <div style="background: var(--fede-bg-card); border: 1px solid var(--fede-border); border-radius: var(--fede-radius-xl); padding: 40px; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 36px; align-items: center;">
         <div style="border-radius: var(--fede-radius-lg); overflow: hidden; border: 1px solid var(--fede-border-fire);">
-          <img src="/assets/img/fedenowback/fede_nowback_fuego.jpg" alt="Fede Nowback" style="width: 100%; height: auto; display: block;">
+          <img src="/assets/img/fedenowback/fede_nowback_street.jpg" alt="Fede Nowback Historia y Trayectoria" style="width: 100%; height: auto; display: block;">
         </div>
         <div>
-          <span class="fede-sec-tag">Mi Trayectoria</span>
+          <span class="fede-sec-tag">Mi Recorrido</span>
           <h2 class="fede-sec-title" style="text-align: left; margin-bottom: 16px;">
-            "Para tener la vida que hoy tengo, tuve que animarme a filmarme con miedo."
+            "Empecé de cero. Literalmente."
           </h2>
-          <p style="color: var(--fede-text-sub); margin-bottom: 14px;">
-            Durante años trabajé en relación de dependencia odiando los lunes, sufriendo ataques de ansiedad y sintiendo que tenía un potencial enorme que no sabía cómo expresar.
+          <p style="color: var(--fede-text-sub); margin-bottom: 14px; line-height: 1.6;">
+            Mis primeros pasos fueron como <strong>filmmaker para bandas de rock</strong>, cámara en mano, aprendiendo haciendo y sin imaginar hasta dónde me iba a llevar ese camino.
           </p>
-          <p style="color: var(--fede-text-sub); margin-bottom: 14px;">
-            Cuando vencí la vergüenza y entendí que la venta ética es simplemente ayudar a otros con lo que sabés hacer, todo cambió. Construí una audiencia de más de 65.000 personas, creé mi propio programa de streaming y hoy vivo 100% de mi marca personal.
+          <p style="color: var(--fede-text-sub); margin-bottom: 14px; line-height: 1.6;">
+            Con el tiempo formé mi propia agencia: pasé de trabajar solo a liderar un equipo de 9 personas y gestionar más de 35 clientes. Ese recorrido me llevó al mundo de la producción y a trabajar como <strong>productor de Maxi Leguízamo</strong>, creando eventos que llegaron a convocar hasta <strong>25.000 personas</strong> y proyectos con presencia en medios como <em>Canal 13, A24, Canal 9, Infobae y Perfil</em>.
+          </p>
+          <p style="color: var(--fede-text-sub); margin-bottom: 18px; line-height: 1.6;">
+            Durante más de 10 años tuve que aprender a vender, comunicar, liderar equipos, negociar y reinventarme. <strong>Hoy no enseño desde un manual: enseño desde la experiencia</strong> para que conviertas lo que sabés en una marca personal que conecte y venda.
           </p>
           <div class="fede-quote">
-            "Dejá de actuar como una gacela cuando adentro tuyo vive un león. El momento de tomar acción fue ayer."
+            "Antes ayudaba a construir grandes proyectos detrás de escena. Hoy uso todo lo que aprendí para ayudarte a construir el tuyo."
           </div>
         </div>
       </div>
@@ -442,15 +580,17 @@ function get_fede_wa($msg = '') {
           <h4>Páginas & Eventos</h4>
           <ul class="fede-footer-links">
             <li><a href="/fedenowback">🏠 Inicio Fede Nowback</a></li>
-            <li><a href="/fedenowback/encende-tu-fuego">🔥 Landing del Evento "Encendé tu Fuego"</a></li>
+            <li><a href="/fedenowback/encende-tu-fuego">🔥 Evento "Encendé tu Fuego"</a></li>
+            <li><a href="#youtube-videos">▶️ Clases en YouTube</a></li>
             <li><a href="#mentorias">🎯 Mentorías 1 a 1</a></li>
-            <li><a href="#comunidad">👥 Comunidad Mundo de Atrevidos</a></li>
+            <li><a href="/fedenowback/comunidad">⚡ Campus & Comunidad Nowback</a></li>
           </ul>
         </div>
 
         <div class="fede-footer-col">
-          <h4>Redes Oficiales</h4>
+          <h4>Canales Oficiales</h4>
           <ul class="fede-footer-links">
+            <li><a href="https://www.youtube.com/@fedenowback6170" target="_blank" rel="noopener noreferrer">🔴 YouTube (@fedenowback6170)</a></li>
             <li><a href="https://www.instagram.com/fedenowback/" target="_blank" rel="noopener noreferrer">📸 Instagram (@fedenowback)</a></li>
             <li><a href="https://www.tiktok.com/@fedenowback" target="_blank" rel="noopener noreferrer">🎬 TikTok (@fedenowback)</a></li>
             <li><a href="https://www.threads.com/@fedenowback" target="_blank" rel="noopener noreferrer">🧵 Threads (@fedenowback)</a></li>
@@ -470,6 +610,22 @@ function get_fede_wa($msg = '') {
     <span style="font-size: 1.25rem;">💬</span>
     <span>WhatsApp (+54 9 11 3820 5570)</span>
   </a>
+
+  <!-- Script para el Visor Interactivo de YouTube -->
+  <script>
+    function loadFedeVideo(videoId, cardEl) {
+      var player = document.getElementById('mainYtPlayer');
+      if (player) {
+        player.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+      }
+      document.querySelectorAll('.fede-video-card').forEach(function(c) {
+        c.classList.remove('active');
+      });
+      if (cardEl) {
+        cardEl.classList.add('active');
+      }
+    }
+  </script>
 
 </body>
 </html>

@@ -97,7 +97,7 @@ require_once __DIR__ . '/layout/header.php';
           <span>📺 <strong>Telefe Noticias</strong> (Empresarios Influencers)</span>
         </div>
         <div class="media-badge-item">
-          <span>📻 <strong>Radio VEO</strong> (Mundo de Atrevidos)</span>
+          <span>🎙️ <strong>Podcasts & Streaming</strong> (Emprendedores Digitales)</span>
         </div>
         <div class="media-badge-item">
           <span>🎓 <strong>Universidad de Palermo</strong> (Cátedras de Diseño)</span>
