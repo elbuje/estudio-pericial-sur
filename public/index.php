@@ -23,6 +23,10 @@ $routes = [
     'fedenowback/comunidad' => __DIR__ . '/../views/fedenowback/comunidad.php',
     'fedenowback/campus' => __DIR__ . '/../views/fedenowback/comunidad.php',
     'fedenowback/skool' => __DIR__ . '/../views/fedenowback/comunidad.php',
+    'christian' => __DIR__ . '/../views/christian/index.php',
+    'christian-cencherle' => __DIR__ . '/../views/christian/index.php',
+    'christian/conferencias' => __DIR__ . '/../views/christian/index.php',
+    'christian/mentoria' => __DIR__ . '/../views/christian/index.php',
 ];
 
 // Redirecciones 301 de URLs antiguas si alguien accede
@@ -77,6 +81,24 @@ if ($path === 'sitemap.xml') {
     <loc><?= SITE_URL ?>/fedenowback/comunidad</loc>
     <lastmod><?= date('Y-m-d') ?></lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc><?= SITE_URL ?>/christian</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc><?= SITE_URL ?>/christian/conferencias</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc><?= SITE_URL ?>/christian/mentoria</loc>
+    <lastmod><?= date('Y-m-d') ?></lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 </urlset>
