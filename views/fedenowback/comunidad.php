@@ -47,7 +47,7 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
   <!-- CSS Custom Campus Fede Nowback Pro -->
-  <link rel="stylesheet" href="/assets/css/fedenowback-campus.css?v=1.0">
+  <link rel="stylesheet" href="/assets/css/fedenowback-campus.css?v=2.1">
 </head>
 <body>
 
@@ -76,17 +76,17 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
           
           <!-- 1-Click Role Switcher -->
           <button id="btnRoleSwitch" class="campus-role-switcher" data-current-role="<?= htmlspecialchars($user['role']) ?>" title="Alternar entre Administrador y Alumno">
-            <span>⚡ Modo: <strong><?= $user['role'] === 'admin' ? '👑 Host (Fede / Admin)' : '👤 Alumno' ?></strong></span>
+            <span>⚡ <strong><?= $user['role'] === 'admin' ? '👑 Admin' : '👤 Alumno' ?></strong></span>
           </button>
 
           <!-- Login Modal Trigger -->
-          <button id="btnOpenLoginModal" class="btn-reaction" style="font-size: 0.8rem; font-weight: 700; background: #fff;" onclick="document.getElementById('modalLogin').style.display='block';">
-            🔐 <?= !empty($user['is_logged_in']) && $user['role'] === 'admin' ? 'Admin Conectado' : 'Ingresar' ?>
+          <button id="btnOpenLoginModal" class="btn-reaction" style="font-size: 0.78rem; font-weight: 700; background: #fff; padding: 5px 10px;" onclick="document.getElementById('modalLogin').style.display='block';">
+            🔐 <?= !empty($user['is_logged_in']) && $user['role'] === 'admin' ? 'Admin' : 'Ingresar' ?>
           </button>
 
           <!-- Points / Fuego Display -->
           <div id="userPointsDisplay" class="campus-points-pill">
-            🔥 <?= $user['points'] ?> Fuego
+            🔥 <?= $user['points'] ?> <span class="points-word">Fuego</span>
           </div>
 
           <!-- User Avatar -->
@@ -95,8 +95,7 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
           <!-- High Visibility Website Button -->
           <a href="/fedenowback" class="campus-btn-website" title="Ir al Sitio Web Oficial de Fede Nowback">
             <span>🌐</span>
-            <span>Sitio Web Oficial</span>
-            <span class="campus-website-badge">Principal ↗</span>
+            <span>Sitio Web ↗</span>
           </a>
         </div>
 
@@ -108,14 +107,14 @@ $page_desc = "Campus privado de alto rendimiento para creadores y emprendedores.
   <nav class="campus-nav-bar">
     <div class="campus-container">
       <ul class="campus-nav-list">
-        <li><a class="campus-nav-item active" data-tab="community">💬 Muro de la Comunidad</a></li>
-        <li><a class="campus-nav-item" data-tab="classroom">🎓 Academia & Cursos</a></li>
+        <li><a class="campus-nav-item active" data-tab="community">💬 Muro</a></li>
+        <li><a class="campus-nav-item" data-tab="classroom">🎓 Academia</a></li>
         <li><a class="campus-nav-item" data-tab="calendar">📅 Meets en Vivo</a></li>
-        <li><a class="campus-nav-item" data-tab="chat">💬 Chat en Tiempo Real</a></li>
-        <li><a class="campus-nav-item" data-tab="leaderboard">🏆 Ranking de Fuego</a></li>
+        <li><a class="campus-nav-item" data-tab="chat">💬 Chat</a></li>
+        <li><a class="campus-nav-item" data-tab="leaderboard">🏆 Ranking</a></li>
         <li><a class="campus-nav-item" data-tab="members">👥 Miembros</a></li>
-        <li><a class="campus-nav-item" data-tab="about">ℹ️ Acerca del Campus</a></li>
-        <li style="margin-left: auto;"><a href="/fedenowback" class="campus-nav-item" style="color: #0284c7; font-weight: 800; border: 1px solid rgba(2, 132, 199, 0.3); background: rgba(2, 132, 199, 0.08); border-radius: var(--c-radius-full); padding: 8px 16px;">🌐 Ir al Sitio Web Principal ↗</a></li>
+        <li><a class="campus-nav-item" data-tab="about">ℹ️ Acerca</a></li>
+        <li style="margin-left: auto;"><a href="/fedenowback" class="campus-nav-item" style="color: #0284c7; font-weight: 800; border: 1px solid rgba(2, 132, 199, 0.3); background: rgba(2, 132, 199, 0.08); border-radius: var(--c-radius-full); padding: 6px 14px; font-size: 0.85rem;">🌐 Ir al Sitio Web ↗</a></li>
       </ul>
     </div>
   </nav>
