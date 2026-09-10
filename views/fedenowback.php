@@ -1,21 +1,21 @@
 <?php
 /**
- * Landing Page - Fede Nowback | Marca Personal & Negocios Digitales
+ * Landing Page - Fede Nowback | Evento "Encendé tu Fuego" & Marca Personal
  * URL: https://pericias.tecnobrain.ar/fedenowback
+ * WhatsApp Oficial: +54 9 11 3820-5570
  */
 
-$page_title = "Fede Nowback | Marca Personal, Mentalidad y Negocios Digitales";
-$page_desc = "Te ayudo a crecer tu negocio y generar ingresos con tu marca personal. Estrategia de contenido, mentalidad, hábitos y ventas reales sin depender de la viralidad.";
+$page_title = "Fede Nowback | Encendé tu Fuego — 7 Reglas para Dejar de Postergar";
+$page_desc = "Evento presencial en CABA con Fede Nowback. 7 reglas prácticas para dejar de postergar, vencer el miedo y cumplir tus metas. Sábado 12 de Septiembre en Lavalle 362 Piso 7.";
 $canonical_url = "https://pericias.tecnobrain.ar/fedenowback";
-$og_image = "https://pericias.tecnobrain.ar/assets/img/fedenowback-og.jpg";
+$og_image = "https://pericias.tecnobrain.ar/assets/img/fedenowback/evento_encende_tu_fuego.jpg";
 
-// WhatsApp Link Generator para Fede Nowback
+// WhatsApp Generator oficial con el número exacto del cliente (+54 9 11 3820-5570)
 function get_fede_wa($msg = '') {
     if (empty($msg)) {
-        $msg = "Hola Fede! Vengo desde tu página web (pericias.tecnobrain.ar/fedenowback) y quiero recibir información sobre tus mentorías / comunidad.";
+        $msg = "Hola Fede! Vengo desde la página web y quiero reservar mi lugar para el evento 'Encendé tu Fuego' del 12 de Septiembre.";
     }
-    // WhatsApp comercial directo
-    return "https://wa.me/5491165821451?text=" . urlencode($msg);
+    return "https://wa.me/5491138205570?text=" . urlencode($msg);
 }
 ?>
 <!DOCTYPE html>
@@ -25,31 +25,26 @@ function get_fede_wa($msg = '') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($page_title) ?></title>
   <meta name="description" content="<?= htmlspecialchars($page_desc) ?>">
-  <meta name="keywords" content="marca personal, fede nowback, fedenowback, mundo de atrevidos, ganar dinero redes sociales, monetizar instagram, mentoría marca personal, crear contenido negocios, estrategia digital">
+  <meta name="keywords" content="fede nowback, encende tu fuego, evento desarrollo personal, dejar de postergar, marca personal, mentalidad, negocios, buenos aires, caba">
   <meta name="author" content="Fede Nowback">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="<?= htmlspecialchars($canonical_url) ?>">
 
   <!-- Open Graph -->
-  <meta property="og:type" content="profile">
+  <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
-  <meta property="og:site_name" content="Fede Nowback | Marca Personal">
+  <meta property="og:site_name" content="Fede Nowback">
   <meta property="og:title" content="<?= htmlspecialchars($page_title) ?>">
   <meta property="og:description" content="<?= htmlspecialchars($page_desc) ?>">
   <meta property="og:url" content="<?= htmlspecialchars($canonical_url) ?>">
   <meta property="og:image" content="<?= htmlspecialchars($og_image) ?>">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="<?= htmlspecialchars($page_title) ?>">
-  <meta name="twitter:description" content="<?= htmlspecialchars($page_desc) ?>">
-
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Montserrat (Headers con fuerza y legibilidad) + Inter (Lectura limpia) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org JSON-LD para Evento y Persona -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,53 +53,35 @@ function get_fede_wa($msg = '') {
         "@type": "Person",
         "@id": "https://pericias.tecnobrain.ar/fedenowback#person",
         "name": "Fede Nowback",
-        "alternateName": "Federico Nowback",
-        "jobTitle": "Estratega de Marca Personal & Mentor de Negocios Digitales",
-        "description": "Especialista en desarrollo de marca personal, creación de contenido estratégico y escalado de negocios para emprendedores y profesionales.",
+        "jobTitle": "Estratega de Marca Personal & Mentor de Crecimiento",
         "url": "https://pericias.tecnobrain.ar/fedenowback",
         "sameAs": [
           "https://www.instagram.com/fedenowback/",
-          "https://www.tiktok.com/@fedenowback",
-          "https://www.threads.com/@fedenowback"
+          "https://www.tiktok.com/@fedenowback"
         ]
       },
       {
-        "@type": "EducationalOccupationalProgram",
-        "@id": "https://pericias.tecnobrain.ar/fedenowback#program",
-        "name": "Mentoría 1 a 1 en Marca Personal y Negocios",
-        "description": "Programa intensivo personalizado para transformar tu conocimiento en una marca personal rentable con ventas recurrentes.",
-        "provider": {
+        "@type": "Event",
+        "name": "Encendé tu Fuego: 7 Reglas para Dejar de Postergar y Cumplir tus Metas",
+        "description": "Masterclass presencial intensiva dictada por Fede Nowback sobre mentalidad, productividad y ejecución de objetivos.",
+        "startDate": "2026-09-12T09:30:00-03:00",
+        "endDate": "2026-09-12T12:00:00-03:00",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@type": "Place",
+          "name": "Auditorio Lavalle 362",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Lavalle 362 Piso 7",
+            "addressLocality": "Ciudad Autónoma de Buenos Aires",
+            "addressRegion": "CABA",
+            "addressCountry": "AR"
+          }
+        },
+        "performer": {
           "@id": "https://pericias.tecnobrain.ar/fedenowback#person"
         }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "¿Necesito tener miles de seguidores para vender con mi marca personal?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. La viralidad es una métrica de vanidad. Lo que realmente genera ingresos es construir una audiencia calificada con una oferta clara y contenido con intención de compra. Podés facturar miles de dólares con menos de 1.000 seguidores comprometidos."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Qué pasa si me da vergüenza la cámara o tengo miedo a la crítica?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Es el obstáculo #1 de casi todos los emprendedores. En el Método Nowback trabajamos primero el pilar de mentalidad y confianza con un sistema de grabación progresivo para que pierdas el miedo en menos de 14 días."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Para quiénes está diseñada la mentoría 1 a 1?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Para emprendedores, dueños de negocios, coaches, psicólogos, médicos, abogados, entrenadores y profesionales independientes que quieren dejar de competir por precio y convertir sus redes en un canal predecible de clientes."
-            }
-          }
-        ]
       }
     ]
   }
@@ -112,24 +89,23 @@ function get_fede_wa($msg = '') {
 
   <style>
     :root {
-      --bg-dark: #080b11;
-      --bg-card: rgba(18, 24, 38, 0.75);
-      --bg-card-hover: rgba(28, 36, 56, 0.9);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(245, 158, 11, 0.3);
-      --primary-gold: #f59e0b;
-      --primary-amber: #fbbf24;
-      --accent-neon: #10b981;
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --text-sub: #d1d5db;
-      --font-display: 'Syne', sans-serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
-      --radius-xl: 24px;
-      --radius-lg: 16px;
-      --radius-md: 10px;
-      --shadow-glow: 0 0 35px rgba(245, 158, 11, 0.15);
-      --shadow-glow-neon: 0 0 35px rgba(16, 185, 129, 0.15);
+      --bg-black: #08090d;
+      --bg-dark: #0f1219;
+      --bg-card: rgba(20, 24, 33, 0.85);
+      --bg-card-hover: rgba(28, 34, 48, 0.95);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-fire: rgba(245, 158, 11, 0.35);
+      --fire-orange: #ff5500;
+      --fire-yellow: #ffb703;
+      --fire-red: #d90429;
+      --text-white: #ffffff;
+      --text-gray: #9ca3af;
+      --text-light: #e5e7eb;
+      --font-heading: 'Montserrat', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-xl: 20px;
+      --radius-lg: 14px;
+      --radius-md: 8px;
     }
 
     * {
@@ -139,631 +115,542 @@ function get_fede_wa($msg = '') {
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
+      background-color: var(--bg-black);
+      color: var(--text-white);
       font-family: var(--font-body);
       line-height: 1.6;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Contenedor */
-    .fede-container {
-      max-width: 1180px;
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 20px;
     }
 
-    /* Header Nav */
-    .fede-header {
+    /* Minimal Header (Sin menú sobrecargado) */
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 100;
+      background: rgba(8, 9, 13, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      background: rgba(8, 11, 17, 0.85);
-      border-bottom: 1px solid var(--border-color);
-      padding: 16px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 0;
     }
 
-    .fede-nav-flex {
+    .header-flex {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .fede-logo {
+    .brand-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       color: #fff;
     }
 
-    .fede-logo-badge {
-      background: linear-gradient(135deg, var(--primary-gold), #ea580c);
-      color: #000;
-      font-weight: 800;
-      font-size: 0.85rem;
+    .badge-logo {
+      background: linear-gradient(135deg, var(--fire-orange), var(--fire-red));
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 0.8rem;
       padding: 4px 10px;
       border-radius: 6px;
       letter-spacing: 0.05em;
-      font-family: var(--font-display);
     }
 
-    .fede-logo-text {
-      font-family: var(--font-display);
+    .brand-title {
+      font-family: var(--font-heading);
       font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
     }
 
-    .fede-nav-links {
-      display: flex;
-      list-style: none;
-      gap: 24px;
+    /* Botón WhatsApp */
+    .btn-wa {
+      display: inline-flex;
       align-items: center;
-    }
-
-    .fede-nav-links a {
-      color: var(--text-muted);
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 12px 24px;
+      border-radius: 9999px;
       text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 600;
-      transition: color 0.2s ease;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
     }
 
-    .fede-nav-links a:hover {
-      color: var(--primary-amber);
+    .btn-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+      background: linear-gradient(135deg, #2ae770, #16a085);
     }
 
-    /* Botones */
-    .btn-fede {
+    .btn-fire {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 14px 28px;
-      border-radius: 9999px;
-      font-weight: 700;
-      font-size: 0.98rem;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-fede-primary {
-      background: linear-gradient(135deg, var(--primary-amber), #ea580c);
+      background: linear-gradient(135deg, var(--fire-orange) 0%, var(--fire-yellow) 100%);
       color: #000;
-      box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.05rem;
+      padding: 16px 36px;
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 6px 25px rgba(255, 85, 0, 0.45);
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
 
-    .btn-fede-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.45);
-      background: linear-gradient(135deg, #fde047, #f97316);
-    }
-
-    .btn-fede-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(8px);
-    }
-
-    .btn-fede-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .btn-fede-wa {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
-    }
-
-    .btn-fede-wa:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.45);
-      background: linear-gradient(135deg, #34d399, #10b981);
+    .btn-fire:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 35px rgba(255, 85, 0, 0.6);
+      background: linear-gradient(135deg, #ff6b1a 0%, #ffc629 100%);
     }
 
     /* Hero Section */
-    .fede-hero {
+    .hero-section {
       position: relative;
-      padding: 80px 0 60px;
+      padding: 60px 0 80px;
       overflow: hidden;
     }
 
-    .fede-hero-bg-glow {
+    .hero-glow {
       position: absolute;
-      top: -150px;
+      top: -100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(234, 88, 12, 0.04) 50%, transparent 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 85, 0, 0.18) 0%, rgba(217, 4, 41, 0.05) 60%, transparent 70%);
       filter: blur(80px);
       pointer-events: none;
       z-index: 0;
     }
 
-    .fede-hero-content {
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
       position: relative;
       z-index: 1;
-      text-align: center;
-      max-width: 880px;
-      margin: 0 auto;
     }
 
-    .fede-pill-badge {
+    .event-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 18px;
+      background: rgba(217, 4, 41, 0.15);
+      border: 1px solid rgba(217, 4, 41, 0.4);
+      color: #ff4d6d;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 6px 14px;
       border-radius: 9999px;
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.25);
-      color: var(--primary-amber);
-      font-size: 0.88rem;
-      font-weight: 700;
-      margin-bottom: 24px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      margin-bottom: 20px;
     }
 
-    .fede-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-      color: #fff;
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
     }
 
-    .fede-hero h1 .highlight-gradient {
-      background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+    .hero-title .fire-text {
+      background: linear-gradient(135deg, var(--fire-yellow) 0%, var(--fire-orange) 50%, var(--fire-red) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .fede-hero-sub {
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      color: var(--text-sub);
-      max-width: 720px;
-      margin: 0 auto 36px;
-      font-weight: 400;
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      font-weight: 500;
     }
 
-    .fede-hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-      margin-bottom: 48px;
-    }
-
-    /* Metrics Grid */
-    .fede-metrics-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+    /* Event Data Cards Grid */
+    .event-info-box {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: 28px 24px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-fire);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(12px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    .fede-metric-item {
-      text-align: center;
-      border-right: 1px solid var(--border-color);
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
-    .fede-metric-item:last-child {
-      border-right: none;
-    }
-
-    .fede-metric-num {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--primary-amber);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .fede-metric-label {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 600;
+    .info-label {
+      font-size: 0.75rem;
+      color: var(--text-gray);
       text-transform: uppercase;
+      font-weight: 700;
       letter-spacing: 0.05em;
     }
 
-    /* Secciones Generales */
-    .fede-section {
-      padding: 90px 0;
-      position: relative;
-    }
-
-    .fede-section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 56px;
-    }
-
-    .fede-section-tag {
-      color: var(--primary-gold);
-      font-weight: 800;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 12px;
-      display: block;
-    }
-
-    .fede-section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    .fede-section-desc {
-      color: var(--text-muted);
+    .info-val {
+      font-family: var(--font-heading);
       font-size: 1.05rem;
-    }
-
-    /* Cards Grid */
-    .fede-grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .fede-grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-    }
-
-    .fede-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      backdrop-filter: blur(12px);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .fede-card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-accent);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-glow);
-    }
-
-    .fede-card-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      margin-bottom: 20px;
-      color: var(--primary-amber);
-    }
-
-    .fede-card-title {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-weight: 800;
       color: #fff;
     }
 
-    .fede-card-text {
-      color: var(--text-muted);
-      font-size: 0.96rem;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      flex-grow: 1;
+    .hero-image-wrap {
+      position: relative;
     }
 
-    /* Pain Points Section */
-    .fede-pain-box {
-      background: linear-gradient(180deg, rgba(239, 68, 68, 0.06) 0%, rgba(18, 24, 38, 0.6) 100%);
-      border: 1px solid rgba(239, 68, 68, 0.2);
+    .hero-flyer-img {
+      width: 100%;
       border-radius: var(--radius-xl);
-      padding: 48px 40px;
-      margin-bottom: 40px;
+      border: 2px solid rgba(255, 85, 0, 0.35);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 85, 0, 0.2);
+      display: block;
+      transition: transform 0.3s ease;
     }
 
-    .fede-pain-list {
-      list-style: none;
+    .hero-flyer-img:hover {
+      transform: scale(1.015);
+    }
+
+    /* Urgency Banner */
+    .urgency-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #d90429, #ef233c);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 900;
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    /* Sección de Reglas / Qué vas a aprender */
+    .section-wrap {
+      padding: 70px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+
+    .section-tag {
+      color: var(--fire-yellow);
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+
+    .rules-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
-    .fede-pain-item {
+    .rule-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
       display: flex;
+      gap: 18px;
       align-items: flex-start;
-      gap: 14px;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 18px 20px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.25s ease;
     }
 
-    .fede-pain-icon {
-      font-size: 1.3rem;
+    .rule-card:hover {
+      border-color: var(--border-fire);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .rule-num {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, rgba(255, 85, 0, 0.2), rgba(255, 183, 3, 0.1));
+      border: 1px solid var(--border-fire);
+      color: var(--fire-yellow);
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
 
-    .fede-pain-item strong {
-      display: block;
+    .rule-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 6px;
       color: #fff;
-      font-size: 1rem;
-      margin-bottom: 4px;
     }
 
-    .fede-pain-item p {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      margin: 0;
-    }
-
-    /* Método Nowback Steps */
-    .fede-step-card {
-      position: relative;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: 36px 30px;
-    }
-
-    .fede-step-number {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: rgba(245, 158, 11, 0.15);
-      position: absolute;
-      top: 20px;
-      right: 24px;
-      line-height: 1;
-    }
-
-    .fede-step-badge {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--primary-gold);
-      background: rgba(245, 158, 11, 0.1);
-      padding: 4px 10px;
-      border-radius: 6px;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Planes & Servicios */
-    .fede-plan-featured {
-      background: linear-gradient(180deg, rgba(30, 41, 62, 0.9) 0%, rgba(18, 24, 38, 0.95) 100%);
-      border: 2px solid var(--primary-gold);
-      box-shadow: var(--shadow-glow);
-    }
-
-    .fede-plan-badge-top {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--primary-amber), #ea580c);
-      color: #000;
-      font-weight: 800;
-      font-size: 0.75rem;
-      padding: 4px 16px;
-      border-radius: 9999px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      white-space: nowrap;
-    }
-
-    .fede-feature-list {
-      list-style: none;
-      margin: 24px 0 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .fede-feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .rule-info p {
       font-size: 0.92rem;
-      color: var(--text-sub);
+      color: var(--text-gray);
+      line-height: 1.5;
     }
 
-    .fede-feature-list li span.check {
-      color: var(--accent-neon);
-      font-weight: 800;
-    }
-
-    /* About Fede Section */
-    .fede-about-wrap {
+    /* Galería de Fede (3 Fotos Reales) */
+    .gallery-grid {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 48px;
-      align-items: center;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: 48px;
-      backdrop-filter: blur(16px);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
     }
 
-    .fede-about-photo-box {
+    .gallery-card {
       position: relative;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--border-color);
-      background: #111622;
+      border: 1px solid var(--border-subtle);
       aspect-ratio: 4/5;
+      background: #141720;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(8, 9, 13, 0.9) 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 24px;
+      padding: 20px;
     }
 
-    .fede-about-photo-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 40%, rgba(8, 11, 17, 0.95) 100%),
-                  radial-gradient(circle at top, rgba(245, 158, 11, 0.25), transparent 70%);
-      z-index: 1;
-    }
-
-    .fede-about-photo-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .fede-about-tag {
-      font-size: 0.85rem;
-      color: var(--primary-amber);
-      font-weight: 700;
-    }
-
-    .fede-about-name {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
+    .gallery-caption {
+      font-family: var(--font-heading);
       font-weight: 800;
+      font-size: 0.95rem;
       color: #fff;
     }
 
-    /* Quotes / Testimonials */
-    .fede-quote-box {
-      background: rgba(0, 0, 0, 0.25);
-      border-left: 3px solid var(--primary-gold);
-      padding: 20px 24px;
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      margin: 24px 0;
-      font-style: italic;
-      color: var(--text-sub);
+    .gallery-sub {
+      font-size: 0.8rem;
+      color: var(--fire-yellow);
     }
 
-    /* FAQ Accordion */
-    .fede-faq-list {
-      max-width: 800px;
+    /* Sobre Fede Box */
+    .about-fede-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-fire);
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 14px;
+      font-size: 0.96rem;
+    }
+
+    .quote-badge {
+      background: rgba(255, 85, 0, 0.08);
+      border-left: 3px solid var(--fire-orange);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-style: italic;
+      color: #fff;
+      font-weight: 500;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+
+    /* Programas Adicionales / Mentoría */
+    .mentor-box {
+      background: linear-gradient(135deg, rgba(255, 85, 0, 0.1) 0%, rgba(217, 4, 41, 0.05) 100%);
+      border: 1px solid var(--border-fire);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .mentor-box h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .mentor-box p {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto 24px;
+      font-size: 1rem;
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 750px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
-    .fede-faq-item {
+    .faq-item {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: all 0.2s ease;
     }
 
-    .fede-faq-item:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .fede-faq-question {
+    .faq-btn {
       width: 100%;
-      text-align: left;
-      padding: 20px 24px;
+      padding: 18px 20px;
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 1.05rem;
+      font-family: var(--font-heading);
       font-weight: 700;
-      font-family: var(--font-body);
+      font-size: 1rem;
+      text-align: left;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
     }
 
-    .fede-faq-answer {
-      padding: 0 24px 20px;
-      color: var(--text-muted);
-      font-size: 0.95rem;
+    .faq-content {
+      padding: 0 20px 18px;
+      color: var(--text-gray);
+      font-size: 0.92rem;
       line-height: 1.6;
     }
 
-    /* CTA Banner */
-    .fede-cta-banner {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(234, 88, 12, 0.08) 100%);
-      border: 1px solid var(--border-accent);
+    /* CTA Bottom Bar */
+    .cta-banner {
+      background: linear-gradient(135deg, #180800 0%, #2b0c03 100%);
+      border: 2px solid var(--fire-orange);
       border-radius: var(--radius-xl);
-      padding: 64px 32px;
+      padding: 50px 30px;
       text-align: center;
-      box-shadow: var(--shadow-glow);
+      box-shadow: 0 0 40px rgba(255, 85, 0, 0.25);
     }
 
-    .fede-cta-banner h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      margin-bottom: 16px;
-      color: #fff;
+    .cta-banner h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .fede-cta-banner p {
-      color: var(--text-sub);
-      font-size: 1.15rem;
-      max-width: 620px;
-      margin: 0 auto 32px;
+    .cta-banner p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto 28px;
     }
 
     /* Footer */
-    .fede-footer {
-      border-top: 1px solid var(--border-color);
-      padding: 48px 0;
+    .site-footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-subtle);
       text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+      color: var(--text-gray);
+      font-size: 0.88rem;
     }
 
-    .fede-footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 20px;
-    }
-
-    .fede-footer-links a {
-      color: var(--text-muted);
+    .site-footer a {
+      color: var(--fire-yellow);
       text-decoration: none;
       font-weight: 600;
     }
 
-    .fede-footer-links a:hover {
-      color: var(--primary-amber);
-    }
-
-    /* WhatsApp Float */
-    .fede-wa-float {
+    /* Floating WhatsApp */
+    .wa-float {
       position: fixed;
       bottom: 24px;
       right: 24px;
@@ -771,369 +658,167 @@ function get_fede_wa($msg = '') {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: linear-gradient(135deg, #10b981, #059669);
+      background: linear-gradient(135deg, #25D366, #128C7E);
       color: #fff;
-      padding: 14px 22px;
+      padding: 14px 24px;
       border-radius: 9999px;
       text-decoration: none;
-      font-weight: 700;
+      font-family: var(--font-heading);
+      font-weight: 800;
       font-size: 0.95rem;
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.45);
+      transition: all 0.25s ease;
     }
 
-    .fede-wa-float:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6);
-    }
-
-    .fede-wa-icon {
-      font-size: 1.4rem;
+    .wa-float:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.65);
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
-      .fede-grid-3, .fede-grid-2 {
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .event-info-box {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .rules-grid {
         grid-template-columns: 1fr;
       }
-      .fede-metrics-bar {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-      }
-      .fede-metric-item:nth-child(2) {
-        border-right: none;
-      }
-      .fede-about-wrap {
+      .gallery-grid {
         grid-template-columns: 1fr;
       }
-      .fede-pain-list {
+      .about-fede-box {
         grid-template-columns: 1fr;
-      }
-      .fede-nav-links {
-        display: none;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="fede-header">
-    <div class="fede-container fede-nav-flex">
-      <a href="/fedenowback" class="fede-logo">
-        <span class="fede-logo-badge">NOWBACK</span>
-        <span class="fede-logo-text">FEDE NOWBACK</span>
+  <!-- Minimal Header (Solo Logo + WhatsApp Directo) -->
+  <header class="site-header">
+    <div class="container header-flex">
+      <a href="/fedenowback" class="brand-logo">
+        <span class="badge-logo">NOWBACK</span>
+        <span class="brand-title">FEDE NOWBACK</span>
       </a>
 
-      <nav>
-        <ul class="fede-nav-links">
-          <li><a href="#problema">El Problema</a></li>
-          <li><a href="#metodo">Metodología</a></li>
-          <li><a href="#servicios">Programas</a></li>
-          <li><a href="#sobre-fede">Sobre Fede</a></li>
-          <li><a href="#faq">Preguntas</a></li>
-        </ul>
-      </nav>
-
-      <a href="<?= get_fede_wa() ?>" target="_blank" rel="noopener noreferrer" class="btn-fede btn-fede-primary" style="padding: 10px 22px; font-size: 0.88rem;">
-        💬 Hablar por WhatsApp
+      <a href="<?= get_fede_wa('Hola Fede! Quiero reservar mi lugar para el evento Encendé tu Fuego.') ?>" target="_blank" rel="noopener noreferrer" class="btn-wa">
+        <span>💬</span>
+        <span>Reservar por WhatsApp</span>
       </a>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="fede-hero">
-    <div class="fede-hero-bg-glow"></div>
-    <div class="fede-container">
-      <div class="fede-hero-content">
-        <div class="fede-pill-badge">
-          🔥 Marca Personal • Mentalidad • Negocios Digitales
-        </div>
-        <h1>
-          Dejá de ser uno más.<br>
-          <span class="highlight-gradient">Viniste a destacar y a monetizar</span> tu conocimiento.
-        </h1>
-        <p class="fede-hero-sub">
-          Te enseño el paso a paso estratégico para vencer el miedo a la cámara, crear contenido con intención de compra y transformar tus redes en un canal predecible de clientes.
-        </p>
-
-        <div class="fede-hero-actions">
-          <a href="<?= get_fede_wa('Hola Fede! Quiero consultar disponibilidad para una Mentoría 1 a 1 personalizada.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede btn-fede-primary">
-            🚀 Aplicar a Mentoría 1 a 1
-          </a>
-          <a href="<?= get_fede_wa('Hola Fede! Quiero sumarme a la Comunidad Gratuita de Emprendedores.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede btn-fede-secondary">
-            👥 Sumarme a la Comunidad Gratis
-          </a>
-        </div>
-
-        <!-- Metrics -->
-        <div class="fede-metrics-bar">
-          <div class="fede-metric-item">
-            <div class="fede-metric-num">+65K</div>
-            <div class="fede-metric-label">Comunidad en Redes</div>
-          </div>
-          <div class="fede-metric-item">
-            <div class="fede-metric-num">+300</div>
-            <div class="fede-metric-label">Emprendedores Guiados</div>
-          </div>
-          <div class="fede-metric-item">
-            <div class="fede-metric-num">100%</div>
-            <div class="fede-metric-label">Estrategia Aplicada</div>
-          </div>
-          <div class="fede-metric-item">
-            <div class="fede-metric-num">0%</div>
-            <div class="fede-metric-label">Humo & Fórmulas Mágicas</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Pain Points Section -->
-  <section class="fede-section" id="problema">
-    <div class="fede-container">
-      <div class="fede-section-header">
-        <span class="fede-section-tag">Diagnóstico Real</span>
-        <h2 class="fede-section-title">¿Por qué tu negocio está estancado o no factura lo que merece?</h2>
-        <p class="fede-section-desc">El problema no es el algoritmo de Instagram. Es la falta de un sistema de atracción y conversión.</p>
-      </div>
-
-      <div class="fede-pain-box">
-        <ul class="fede-pain-list">
-          <li class="fede-pain-item">
-            <span class="fede-pain-icon">❌</span>
-            <div>
-              <strong>Publicás contenido todos los días sin ventas</strong>
-              <p>Métricas de vanidad (likes y reproducciones) que no se traducen en transferencias bancarias ni en clientes calificados.</p>
-            </div>
-          </li>
-          <li class="fede-pain-item">
-            <span class="fede-pain-icon">❌</span>
-            <div>
-              <strong>Miedo a exponerte y al juicio ajeno</strong>
-              <p>Inseguridad al encender la cámara, miedo a que amigos o colegas te critiquen y síndrome del impostor.</p>
-            </div>
-          </li>
-          <li class="fede-pain-item">
-            <span class="fede-pain-icon">❌</span>
-            <div>
-              <strong>Competís por precio porque no te diferenciás</strong>
-              <p>Tus clientes te comparan con la competencia porque no tenés una propuesta de valor única ni autoridad de marca.</p>
-            </div>
-          </li>
-          <li class="fede-pain-item">
-            <span class="fede-pain-icon">❌</span>
-            <div>
-              <strong>Creés que necesitás miles de seguidores para vender</strong>
-              <p>Esperar a ser "viral" es la trampa perfecta para posponer tus metas. Las ventas se cierran con claridad, no con millones de views.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- The Method Section -->
-  <section class="fede-section" id="metodo" style="background: rgba(255,255,255,0.015);">
-    <div class="fede-container">
-      <div class="fede-section-header">
-        <span class="fede-section-tag">El Sistema Probado</span>
-        <h2 class="fede-section-title">Los 3 Pilares del Método Nowback</h2>
-        <p class="fede-section-desc">De la invisibilidad al liderazgo en tu nicho mediante una estructura paso a paso.</p>
-      </div>
-
-      <div class="fede-grid-3">
+  <section class="hero-section">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-grid">
         
-        <div class="fede-step-card">
-          <span class="fede-step-number">01</span>
-          <span class="fede-step-badge">Pilar Estratégico</span>
-          <h3 class="fede-card-title">Posicionamiento & Diferenciación</h3>
-          <p class="fede-card-text">
-            Definimos tu identidad de marca, tu cliente ideal (quién tiene la plata y la necesidad) y tu oferta irresistible para que dejes de competir por precio.
-          </p>
-          <ul class="fede-feature-list" style="margin-bottom: 0;">
-            <li><span class="check">✓</span> Optimización de Bio & Perfil Comercial</li>
-            <li><span class="check">✓</span> Claridad de Propuesta de Valor</li>
-            <li><span class="check">✓</span> Estrategia de Precios y Autoridad</li>
-          </ul>
-        </div>
-
-        <div class="fede-step-card">
-          <span class="fede-step-number">02</span>
-          <span class="fede-step-badge">Pilar de Contenido</span>
-          <h3 class="fede-card-title">Contenido con Intención</h3>
-          <p class="fede-card-text">
-            Creamos guiones para Reels y Carruseles con ganchos magnéticos que atraen clientes listos para comprar, sin perder horas editando ni fingir quien no sos.
-          </p>
-          <ul class="fede-feature-list" style="margin-bottom: 0;">
-            <li><span class="check">✓</span> Estructura de Guiones de Alta Retención</li>
-            <li><span class="check">✓</span> Sistema de Grabación en 4 Horas Mensuales</li>
-            <li><span class="check">✓</span> Eliminación de Métricas Vacías</li>
-          </ul>
-        </div>
-
-        <div class="fede-step-card">
-          <span class="fede-step-number">03</span>
-          <span class="fede-step-badge">Pilar de Cierre</span>
-          <h3 class="fede-card-title">Mentalidad & Monetización</h3>
-          <p class="fede-card-text">
-            Blindaje emocional contra la crítica, disciplina diaria y embudos simples por mensaje directo (DM/WhatsApp) para cerrar prospectos con naturalidad.
-          </p>
-          <ul class="fede-feature-list" style="margin-bottom: 0;">
-            <li><span class="check">✓</span> Control Emocional y Superación del Miedo</li>
-            <li><span class="check">✓</span> Conversión Directa de Seguidor a Cliente</li>
-            <li><span class="check">✓</span> Hábitos de Alta Productividad</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Programs & Services -->
-  <section class="fede-section" id="servicios">
-    <div class="fede-container">
-      <div class="fede-section-header">
-        <span class="fede-section-tag">¿Cómo podemos trabajar juntos?</span>
-        <h2 class="fede-section-title">Elige tu Nivel de Acompañamiento</h2>
-        <p class="fede-section-desc">Soluciones diseñadas tanto si estás dando tus primeros pasos como si querés escalar tu facturación.</p>
-      </div>
-
-      <div class="fede-grid-2">
-        
-        <!-- Mentoría 1 a 1 -->
-        <div class="fede-card fede-plan-featured">
-          <span class="fede-plan-badge-top">⭐ Máxima Personalización</span>
-          <div class="fede-card-icon">🎯</div>
-          <h3 class="fede-card-title">Mentoría 1 a 1 Privada</h3>
-          <p class="fede-card-text">
-            Trabajo mano a mano conmigo durante 30 a 60 días para diseñar, lanzar y monetizar tu marca personal con un plan quirúrgico hecho a tu medida.
-          </p>
-          <ul class="fede-feature-list">
-            <li><span class="check">✓</span> Diagnóstico y Auditoría Total de tu Perfil y Oferta</li>
-            <li><span class="check">✓</span> Sesiones semanales individuales vía Zoom</li>
-            <li><span class="check">✓</span> Creación de tu Estrategia de Contenidos y Guiones</li>
-            <li><span class="check">✓</span> Acompañamiento y feedback directo por WhatsApp privado</li>
-            <li><span class="check">✓</span> Guía paso a paso para tus primeros USD 1.000+</li>
-          </ul>
-          <a href="<?= get_fede_wa('Hola Fede! Quiero postularme para la Mentoría 1 a 1.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede btn-fede-primary" style="width: 100%;">
-            💬 Postular a Mentoría 1 a 1
-          </a>
-        </div>
-
-        <!-- Comunidad Mundo de Atrevidos -->
-        <div class="fede-card">
-          <div class="fede-card-icon">🚀</div>
-          <h3 class="fede-card-title">Comunidad Mundo de Atrevidos</h3>
-          <p class="fede-card-text">
-            El espacio para emprendedores que no se conforman con la mediocridad. Networking, clases en vivo, motivación diaria y recursos prácticos.
-          </p>
-          <ul class="fede-feature-list">
-            <li><span class="check">✓</span> Acceso al Grupo de Emprendedores Atrevidos</li>
-            <li><span class="check">✓</span> Clases en vivo periódicas sobre marketing y mentalidad</li>
-            <li><span class="check">✓</span> Desafíos semanales de creación de contenido</li>
-            <li><span class="check">✓</span> Networking con profesionales y dueños de negocio</li>
-            <li><span class="check">✓</span> Acceso a transmisiones y debates de actualidad</li>
-          </ul>
-          <a href="<?= get_fede_wa('Hola Fede! Quiero unirme a la Comunidad Gratuita Mundo de Atrevidos.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede btn-fede-secondary" style="width: 100%;">
-            👥 Unirme Gratis a la Comunidad
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- About Fede Section -->
-  <section class="fede-section" id="sobre-fede" style="background: rgba(255,255,255,0.015);">
-    <div class="fede-container">
-      <div class="fede-about-wrap">
-        
-        <div class="fede-about-photo-box">
-          <div class="fede-about-photo-bg"></div>
-          <div class="fede-about-photo-content">
-            <span class="fede-about-tag">Creador & Mentor</span>
-            <div class="fede-about-name">Fede Nowback</div>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">Estratega de Marca Personal • Conductor de Mundo de Atrevidos</p>
-          </div>
-        </div>
-
+        <!-- Textos & Event Info -->
         <div>
-          <span class="fede-section-tag">Mi Historia</span>
-          <h2 class="fede-section-title" style="text-align: left; margin-bottom: 20px;">
-            "Para tener la vida que hoy tengo, tuve que animarme a filmarme con miedo."
-          </h2>
-          
-          <p style="color: var(--text-sub); margin-bottom: 16px;">
-            No nací sabiendo hablar frente a una cámara. Durante años sufrí de <strong>ataques de ansiedad, inseguridades profundas y el temor constante a la crítica</strong> de los demás. Trabajaba en relación de dependencia sintiendo que mis lunes eran una condena.
-          </p>
-          
-          <p style="color: var(--text-sub); margin-bottom: 16px;">
-            El día que decidí que mi propósito era más grande que mi miedo, todo cambió. Aprendí a estructurar un mensaje, a comunicar con convicción y a construir una marca personal basada en resultados y no en apariencias.
+          <span class="event-tag">🔥 Evento Presencial en CABA • Últimos Lugares</span>
+          <h1 class="hero-title">
+            ENCENDÉ <span class="fire-text">TU FUEGO</span>
+          </h1>
+          <p class="hero-sub">
+            <strong>7 Reglas Prácticas para Dejar de Postergar, Vencer el Miedo y Cumplir tus Metas.</strong> Una masterclass intensiva para transformar tu mentalidad y pasar a la acción definitiva.
           </p>
 
-          <div class="fede-quote-box">
-            "Dejá de actuar como una gacela cuando dentro tuyo vive un león. El momento perfecto para emprender no es cuando todo esté resuelto: fue ayer."
+          <!-- Datos del Evento -->
+          <div class="event-info-box">
+            <div class="info-item">
+              <span class="info-label">📅 Fecha</span>
+              <span class="info-val">Sábado 12 de Septiembre</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">⏰ Horario</span>
+              <span class="info-val">9:30 a 12:00 hs</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">📍 Ubicación</span>
+              <span class="info-val">Lavalle 362, Piso 7 (CABA)</span>
+            </div>
           </div>
 
-          <p style="color: var(--text-muted); font-size: 0.95rem;">
-            Hoy ayudo a cientos de personas a desbloquear su potencial comercial, construir autoridad y vivir de lo que aman.
-          </p>
+          <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+            <div class="urgency-badge">⚠️ Cupos Limitados — Reservá con Anticipación</div>
+            <a href="<?= get_fede_wa('Hola Fede! Quiero reservar uno de los últimos lugares para el evento Encendé tu Fuego del 12 de Septiembre.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fire">
+              🔥 Asegurar Mi Lugar por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Flyer Oficial -->
+        <div class="hero-image-wrap">
+          <img src="/assets/img/fedenowback/evento_encende_tu_fuego.jpg" alt="Flyer Oficial Encendé tu Fuego - Fede Nowback" class="hero-flyer-img">
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="fede-section" id="faq">
-    <div class="fede-container">
-      <div class="fede-section-header">
-        <span class="fede-section-tag">Resolvé tus Dudas</span>
-        <h2 class="fede-section-title">Preguntas Frecuentes</h2>
-        <p class="fede-section-desc">Respuestas directas y sin rodeos sobre cómo trabajamos.</p>
+  <!-- Las 7 Reglas del Evento -->
+  <section class="section-wrap">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Contenido del Evento</span>
+        <h2 class="section-title">¿Qué vas a llevarte de este encuentro?</h2>
+        <p style="color: var(--text-gray);">Herramientas concretas y aplicables sin rodeos ni teorías vacías.</p>
       </div>
 
-      <div class="fede-faq-list">
+      <div class="rules-grid">
         
-        <div class="fede-faq-item">
-          <button class="fede-faq-question" onclick="toggleFaq(this)">
-            ¿Necesito tener muchos seguidores para empezar a vender?
-            <span>▾</span>
-          </button>
-          <div class="fede-faq-answer">
-            Totalmente NO. La obsesión por los números de seguidores es el mayor error. Lo que necesitas es tener una audiencia cualificada, un mensaje claro y una oferta bien armada. Puedes generar miles de dólares teniendo apenas unos cientos de seguidores si sabes cómo guiarlos al cierre.
+        <div class="rule-card">
+          <div class="rule-num">1</div>
+          <div class="rule-info">
+            <h3>Destruir la Procrastinación</h3>
+            <p>Cómo romper el ciclo de dejar todo para "el lunes" o "el próximo mes" con un sistema diario de micro-victorias.</p>
           </div>
         </div>
 
-        <div class="fede-faq-item">
-          <button class="fede-faq-question" onclick="toggleFaq(this)">
-            ¿Qué pasa si me da vergüenza la cámara o no sé qué decir?
-            <span>▾</span>
-          </button>
-          <div class="fede-faq-answer">
-            Es completamente natural. En la mentoría trabajamos con plantillas de guiones prediseñadas y técnicas de grabación progresiva que eliminan la improvisación. En pocos días vas a estar grabando con soltura y seguridad.
+        <div class="rule-card">
+          <div class="rule-num">2</div>
+          <div class="rule-info">
+            <h3>Vencer el Miedo al Juicio Ajeno</h3>
+            <p>Blindaje mental contra las críticas, la vergüenza y el síndrome del impostor para mostrarte y liderar.</p>
           </div>
         </div>
 
-        <div class="fede-faq-item">
-          <button class="fede-faq-question" onclick="toggleFaq(this)">
-            ¿Sirve si vendo productos físicos o solo para servicios/coaching?
-            <span>▾</span>
-          </button>
-          <div class="fede-faq-answer">
-            Sirve para ambos. Hoy en día las marcas que más venden productos físicos son aquellas que humanizan su proceso y cuentan historias. La gente no le compra a un logo: le compra a la persona detrás del negocio.
+        <div class="rule-card">
+          <div class="rule-num">3</div>
+          <div class="rule-info">
+            <h3>Gestión Emocional en Momentos Difíciles</h3>
+            <p>Cómo sostener la disciplina cuando no tenés ganas, perdiste clientes o sentís que todo se complica.</p>
           </div>
         </div>
 
-        <div class="fede-faq-item">
-          <button class="fede-faq-question" onclick="toggleFaq(this)">
-            ¿Cómo se coordinan las sesiones de la mentoría 1 a 1?
-            <span>▾</span>
-          </button>
-          <div class="fede-faq-answer">
-            Las sesiones se realizan vía Zoom en horarios coordinados según tu disponibilidad. Además, contamos con soporte continuo vía WhatsApp para revisar guiones, métricas y ajustar la estrategia en tiempo real.
+        <div class="rule-card">
+          <div class="rule-num">4</div>
+          <div class="rule-info">
+            <h3>El Poder de un Entorno que te Eleve</h3>
+            <p>Por qué tus amistades y tu círculo determinan tu nivel de ingresos y cómo rodearte de personas atrevidas.</p>
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">5</div>
+          <div class="rule-info">
+            <h3>Estructuración de Metas Reales</h3>
+            <p>La metodología para fijar objetivos medibles que no se abandonan a mitad de camino.</p>
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">6</div>
+          <div class="rule-info">
+            <h3>Hábitos de Alta Energía y Foco</h3>
+            <p>Rutinas matutinas y de desconexión para no quemarte y mantener tu nivel de ejecución en el máximo estándar.</p>
           </div>
         </div>
 
@@ -1141,64 +826,174 @@ function get_fede_wa($msg = '') {
     </div>
   </section>
 
-  <!-- Final CTA Banner -->
-  <section class="fede-section" style="padding-top: 0;">
-    <div class="fede-container">
-      <div class="fede-cta-banner">
-        <h2>¿Estás listo para dar el salto y transformar tu marca?</h2>
-        <p>No dejes que otro mes pase con tu negocio estancado. Tomá acción hoy mismo y construyamos tu autoridad digital.</p>
-        <a href="<?= get_fede_wa('Hola Fede! Quiero empezar a trabajar en mi marca personal hoy mismo.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede btn-fede-primary" style="font-size: 1.1rem; padding: 16px 36px;">
-          💬 Iniciar Conversación por WhatsApp
+  <!-- Galería de 3 Fotos Reales de Fede Nowback -->
+  <section class="section-wrap" style="background: rgba(255,255,255,0.01);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Conocé a Fede Nowback</span>
+        <h2 class="section-title">Comunidad, Pasión y Resultados</h2>
+        <p style="color: var(--text-gray);">Estratega de Marca Personal, creador de contenido y conductor de Mundo de Atrevidos.</p>
+      </div>
+
+      <div class="gallery-grid">
+        
+        <!-- Foto 1: Terraza / Radio VEO -->
+        <div class="gallery-card">
+          <img src="/assets/img/fedenowback/fede_nowback_rooftop.jpg" alt="Fede Nowback en terraza VEO Radio Buenos Aires">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Fede Nowback</span>
+            <span class="gallery-sub">Conductor de Mundo de Atrevidos</span>
+          </div>
+        </div>
+
+        <!-- Foto 2: Fuego / Motivación -->
+        <div class="gallery-card">
+          <img src="/assets/img/fedenowback/fede_nowback_fuego.jpg" alt="Fede Nowback - Encendé tu Fuego">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Encendé tu Fuego</span>
+            <span class="gallery-sub">Evento Presencial 12 de Septiembre</span>
+          </div>
+        </div>
+
+        <!-- Foto 3: Flyer Oficial del Evento -->
+        <div class="gallery-card">
+          <img src="/assets/img/fedenowback/evento_encende_tu_fuego.jpg" alt="Flyer Oficial Encendé tu Fuego">
+          <div class="gallery-overlay">
+            <span class="gallery-caption">Lavalle 362 Piso 7</span>
+            <span class="gallery-sub">CABA • 9:30 a 12:00 H</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sobre Fede Historia -->
+      <div class="about-fede-box">
+        <div class="about-img-wrap">
+          <img src="/assets/img/fedenowback/fede_nowback_rooftop.jpg" alt="Fede Nowback retrato">
+        </div>
+        <div class="about-text">
+          <h2>De los Ataques de Ansiedad a Vivir de mi Propósito</h2>
+          <p>
+            Durante años sentí que estaba estancado, con miedo a hablar en público, sufriendo ataques de pánico y temiendo lo que otros pudieran decir de mí si intentaba algo diferente.
+          </p>
+          <p>
+            El día que decidí que mis sueños eran más grandes que mis excusas, comencé a construir una marca personal basada en hábitos, mentalidad y acción constante.
+          </p>
+          <div class="quote-badge">
+            "Dejá de actuar como una gacela cuando dentro tuyo vive un león. El momento perfecto para dar el salto no es mañana: fue ayer."
+          </div>
+          <p>
+            Hoy comparto este camino con más de <strong>65.000 personas en redes</strong> y acompaño a cientos de emprendedores a desbloquear su potencial.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Mentorías y Servicios Adicionales -->
+  <section class="section-wrap">
+    <div class="container">
+      <div class="mentor-box">
+        <span class="section-tag">Acompañamiento Personalizado</span>
+        <h3>¿Querés Trabajar tu Marca Personal Mano a Mano?</h3>
+        <p>
+          Además del evento, cuento con programas de <strong>Mentoría 1 a 1</strong> para emprendedores, coaches y profesionales que buscan estructurar su oferta y vender en redes sin depender de la suerte.
+        </p>
+        <a href="<?= get_fede_wa('Hola Fede! Me interesa consultar disponibilidad para tu Mentoría 1 a 1 de Marca Personal.') ?>" target="_blank" rel="noopener noreferrer" class="btn-wa" style="font-size: 1.05rem; padding: 14px 32px;">
+          💬 Consultar por Mentoría 1 a 1 (+54 9 11 3820-5570)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-wrap">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Preguntas Frecuentes</span>
+        <h2 class="section-title">Resolvemos tus Dudas</h2>
+      </div>
+
+      <div class="faq-list">
+        
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            ¿Dónde y cuándo es el evento?
+            <span>▾</span>
+          </button>
+          <div class="faq-content">
+            El evento se realiza el <strong>Sábado 12 de Septiembre de 9:30 a 12:00 hs</strong> en <strong>Lavalle 362, Piso 7, Ciudad de Buenos Aires (CABA)</strong>.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            ¿Cómo reservo mi lugar?
+            <span>▾</span>
+          </button>
+          <div class="faq-content">
+            Hacés clic en cualquiera de los botones de WhatsApp de esta página y te coordinamos la reserva y medios de pago directo con Fede al <strong>+54 9 11 3820-5570</strong>.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            ¿Necesito tener un negocio en marcha para asistir?
+            <span>▾</span>
+          </button>
+          <div class="faq-content">
+            No. El evento está pensado tanto para quienes ya tienen un emprendimiento y quieren destrabar sus resultados, como para quienes tienen una idea o buscan mejorar su disciplina personal.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner CTA Final -->
+  <section class="section-wrap" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>¿Estás listo para encender tu fuego?</h2>
+        <p>Los cupos son limitados para garantizar una experiencia cercana e interactiva. Asegurá tu lugar antes de que se agoten.</p>
+        <a href="<?= get_fede_wa('Hola Fede! Quiero confirmar mi asistencia para Encendé tu Fuego el 12 de Septiembre.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fire">
+          🔥 Quiero Mi Entrada por WhatsApp
         </a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="fede-footer">
-    <div class="fede-container">
-      <div class="fede-footer-links">
-        <a href="https://www.instagram.com/fedenowback/" target="_blank" rel="noopener noreferrer">Instagram (@fedenowback)</a>
-        <a href="https://www.tiktok.com/@fedenowback" target="_blank" rel="noopener noreferrer">TikTok (@fedenowback)</a>
-        <a href="#metodo">Metodología</a>
-        <a href="#servicios">Mentorías</a>
-      </div>
-      <p>&copy; <?= date('Y') ?> <strong>Fede Nowback</strong>. Todos los derechos reservados. Marca Personal & Negocios Digitales.</p>
+  <footer class="site-footer">
+    <div class="container">
+      <p style="margin-bottom: 8px;">
+        &copy; <?= date('Y') ?> <strong>Fede Nowback</strong>. Todos los derechos reservados.
+      </p>
+      <p>
+        Contacto directo WhatsApp: <a href="<?= get_fede_wa() ?>" target="_blank" rel="noopener noreferrer">+54 9 11 3820-5570</a> • Instagram: <a href="https://www.instagram.com/fedenowback/" target="_blank" rel="noopener noreferrer">@fedenowback</a>
+      </p>
     </div>
   </footer>
 
-  <!-- WhatsApp Float Button -->
-  <a href="<?= get_fede_wa() ?>" target="_blank" rel="noopener noreferrer" class="fede-wa-float" aria-label="Contactar a Fede Nowback por WhatsApp">
-    <span class="fede-wa-icon">💬</span>
-    <span>Consultar por WhatsApp</span>
+  <!-- Floating WhatsApp Direct Button -->
+  <a href="<?= get_fede_wa() ?>" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp Fede Nowback">
+    <span style="font-size: 1.3rem;">💬</span>
+    <span>WhatsApp (+54 9 11 3820 5570)</span>
   </a>
 
-  <!-- Script FAQ Accordion -->
+  <!-- Script FAQ Toggle -->
   <script>
     function toggleFaq(btn) {
-      const answer = btn.nextElementSibling;
-      const isVisible = answer.style.display === 'block';
-      
-      // Cerrar todos los demás
-      document.querySelectorAll('.fede-faq-answer').forEach(el => el.style.display = 'none');
-      document.querySelectorAll('.fede-faq-question span').forEach(el => el.textContent = '▾');
-
-      if (!isVisible) {
-        answer.style.display = 'block';
+      const content = btn.nextElementSibling;
+      const isOpen = content.style.display === 'block';
+      document.querySelectorAll('.faq-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.faq-btn span').forEach(el => el.textContent = '▾');
+      if (!isOpen) {
+        content.style.display = 'block';
         btn.querySelector('span').textContent = '▴';
       }
     }
-
-    // Smooth Scroll para links internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
   </script>
 
 </body>
