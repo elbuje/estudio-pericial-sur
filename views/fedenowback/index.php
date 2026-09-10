@@ -97,7 +97,7 @@ function get_fede_wa($msg = '') {
         <ul class="fede-nav-links">
           <li><a href="#metodo">Metodología</a></li>
           <li><a href="#mentorias">Mentoría 1a1</a></li>
-          <li><a href="#comunidad">Comunidad</a></li>
+          <li><a href="/fedenowback/comunidad" style="color: var(--fede-fire-orange); font-weight: 800;">⚡ Campus & Comunidad</a></li>
           <li><a href="#sobre-fede">Sobre Fede</a></li>
           <li><a href="/fedenowback/encende-tu-fuego" style="color: var(--fede-fire-yellow); font-weight: 800;">🔥 Evento 12/09</a></li>
           <li><a href="#faq">FAQ</a></li>
@@ -129,11 +129,14 @@ function get_fede_wa($msg = '') {
           </p>
 
           <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px;">
-            <a href="<?= get_fede_wa('Hola Fede! Quiero consultar disponibilidad para una Mentoría 1 a 1 de Marca Personal.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede-fire">
-              🚀 Aplicar a Mentoría 1 a 1
+            <a href="/fedenowback/comunidad" class="btn-fede-fire">
+              ⚡ Entrar al Campus Atrevido
             </a>
             <a href="/fedenowback/encende-tu-fuego" class="btn-fede-outline">
               🔥 Ver Evento "Encendé tu Fuego"
+            </a>
+            <a href="<?= get_fede_wa('Hola Fede! Quiero postularme a una Mentoría 1 a 1 de Marca Personal.') ?>" target="_blank" rel="noopener noreferrer" class="btn-fede-outline">
+              🚀 Mentoría 1 a 1
             </a>
           </div>
 
