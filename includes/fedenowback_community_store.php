@@ -8,8 +8,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Data Store File Path
-define('FEDE_COMMUNITY_DATA_FILE', __DIR__ . '/../../data/fedenowback_community_data.json');
+require_once __DIR__ . '/fedenowback_db.php';
+
+// Auto-initialize DB Schema if needed
+fede_db_init_schema();
 
 // Admin Credentials Configuration
 define('FEDE_ADMIN_EMAIL', 'mfmujic@gmail.com');
@@ -477,20 +479,149 @@ function fede_get_default_community_data() {
 }
 
 /**
- * Load Community Data (with session overrides if saved in session)
+ * Load Community Data from MySQL (with session / default fallback)
  */
 function fede_load_community_data() {
-    if (isset($_SESSION['fede_community_state'])) {
-        return $_SESSION['fede_community_state'];
+    $pdo = fede_db();
+    $data = fede_get_default_community_data();
+
+    if ($pdo) {
+        try {
+            // 1. Fetch Categories from MySQL
+            $cats = $pdo->query("SELECT * FROM `fede_categories` ORDER BY `order_num` ASC")->fetchAll();
+            if (!empty($cats)) {
+                $data['categories'] = $cats;
+            }
+
+            // 2. Fetch Posts from MySQL with Author Info & Comments
+            $sql_posts = "
+                SELECT p.*, u.name as author_name, u.handle as author_handle, u.avatar as author_avatar, u.role as author_role, u.level as author_level, u.level_name as author_level_name
+                FROM `fede_posts` p
+                JOIN `fede_users` u ON p.user_id = u.id
+                ORDER BY p.pinned DESC, p.created_at DESC
+                LIMIT 50
+            ";
+            $db_posts = $pdo->query($sql_posts)->fetchAll();
+            if (!empty($db_posts)) {
+                $parsed_posts = [];
+                foreach ($db_posts as $dp) {
+                    // Fetch likes
+                    $likes_stmt = $pdo->prepare("SELECT user_id FROM `fede_post_likes` WHERE post_id = ?");
+                    $likes_stmt->execute([$dp['id']]);
+                    $liked_users = $likes_stmt->fetchAll(PDO::FETCH_COLUMN);
+
+                    // Fetch comments
+                    $comm_stmt = $pdo->prepare("
+                        SELECT c.*, u.name as author_name, u.avatar as author_avatar, u.level_name as author_level_name
+                        FROM `fede_comments` c
+                        JOIN `fede_users` u ON c.user_id = u.id
+                        WHERE c.post_id = ?
+                        ORDER BY c.created_at ASC
+                    ");
+                    $comm_stmt->execute([$dp['id']]);
+                    $db_comments = $comm_stmt->fetchAll();
+
+                    $comments_list = [];
+                    foreach ($db_comments as $dc) {
+                        $comments_list[] = [
+                            'id' => 'comm_' . $dc['id'],
+                            'author' => [
+                                'name' => $dc['author_name'],
+                                'avatar' => $dc['author_avatar'] ?: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
+                                'level_name' => $dc['author_level_name']
+                            ],
+                            'content' => $dc['content'],
+                            'likes' => (int)$dc['likes_count'],
+                            'created_at' => date('d/m H:i', strtotime($dc['created_at']))
+                        ];
+                    }
+
+                    $parsed_posts[] = [
+                        'id' => (string)$dp['id'],
+                        'category' => $dp['category_id'],
+                        'pinned' => (bool)$dp['pinned'],
+                        'author' => [
+                            'id' => (string)$dp['user_id'],
+                            'name' => $dp['author_name'],
+                            'handle' => $dp['author_handle'],
+                            'avatar' => $dp['author_avatar'] ?: '/assets/img/fedenowback/fede_nowback_fuego.jpg',
+                            'is_host' => ($dp['author_role'] === 'admin'),
+                            'level_name' => ($dp['author_role'] === 'admin' ? '👑 MENTOR & HOST' : ('Nivel ' . $dp['author_level'] . ' • ' . $dp['author_level_name'])),
+                            'badge' => ($dp['author_role'] === 'admin' ? '👑 HOST' : ('⚡ Rango ' . $dp['author_level']))
+                        ],
+                        'title' => $dp['title'],
+                        'content' => $dp['content'],
+                        'likes' => (int)$dp['likes_count'],
+                        'liked_by' => $liked_users,
+                        'created_at' => date('d/m H:i', strtotime($dp['created_at'])),
+                        'comments' => $comments_list
+                    ];
+                }
+                $data['posts'] = $parsed_posts;
+            }
+
+            // 3. Fetch Meets from MySQL
+            $db_meets = $pdo->query("SELECT * FROM `fede_meets` ORDER BY `id` DESC LIMIT 10")->fetchAll();
+            if (!empty($db_meets)) {
+                $data['meets'] = $db_meets;
+            }
+
+            // 4. Fetch Leaderboard from MySQL
+            $db_users = $pdo->query("SELECT * FROM `fede_users` ORDER BY `points` DESC LIMIT 20")->fetchAll();
+            if (!empty($db_users)) {
+                $leaderboard = [];
+                $rank = 1;
+                foreach ($db_users as $du) {
+                    $leaderboard[] = [
+                        'rank' => $rank++,
+                        'name' => $du['name'],
+                        'avatar' => $du['avatar'] ?: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80',
+                        'points' => (int)$du['points'],
+                        'level' => (int)$du['level'],
+                        'level_name' => $du['level_name'],
+                        'badge' => ($du['role'] === 'admin' ? '👑 HOST' : '⚡ Rango ' . $du['level']),
+                        'perk' => ($du['role'] === 'admin' ? 'Fundador & Host' : 'Desbloqueó Mentorías'),
+                        'is_current_user' => (isset($_SESSION['fede_user']['email']) && $_SESSION['fede_user']['email'] === $du['email'])
+                    ];
+                }
+                $data['leaderboard'] = $leaderboard;
+            }
+
+            // 5. Fetch Chat Messages from MySQL
+            $db_chat = $pdo->query("
+                SELECT cm.*, u.name as author_name, u.avatar as author_avatar, u.role as author_role
+                FROM `fede_chat_messages` cm
+                JOIN `fede_users` u ON cm.user_id = u.id
+                WHERE cm.room = 'general'
+                ORDER BY cm.created_at ASC
+                LIMIT 50
+            ")->fetchAll();
+
+            if (!empty($db_chat)) {
+                $chat_list = [];
+                foreach ($db_chat as $dc) {
+                    $chat_list[] = [
+                        'id' => (string)$dc['id'],
+                        'author' => $dc['author_name'],
+                        'avatar' => $dc['author_avatar'] ?: '/assets/img/fedenowback/fede_nowback_fuego.jpg',
+                        'is_host' => ($dc['author_role'] === 'admin'),
+                        'content' => $dc['content'],
+                        'time' => date('H:i', strtotime($dc['created_at']))
+                    ];
+                }
+                $data['chat_messages'] = $chat_list;
+            }
+
+        } catch (Exception $e) {
+            error_log("Error loading community data from MySQL: " . $e->getMessage());
+        }
     }
-    
-    $default = fede_get_default_community_data();
-    $_SESSION['fede_community_state'] = $default;
-    return $default;
+
+    return $data;
 }
 
 /**
- * Save Community Data to Session
+ * Save Community Data to Session (Backup)
  */
 function fede_save_community_data($data) {
     $_SESSION['fede_community_state'] = $data;

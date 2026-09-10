@@ -1,11 +1,12 @@
 <?php
 /**
- * Campus Atrevido - AJAX API Controller
- * Secure endpoint handling community interactions
+ * Campus Atrevido - MySQL AJAX API Controller
+ * Secure endpoint handling community interactions backed by MySQL
  */
 
 require_once __DIR__ . '/../../includes/config.php';
 require_once __DIR__ . '/../../includes/fedenowback_community_store.php';
+require_once __DIR__ . '/../../includes/fedenowback_db.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -25,11 +26,12 @@ if (in_array($action, ['create_post', 'like_post', 'add_comment', 'complete_less
 }
 
 $user = &$_SESSION['fede_user'];
-$data = fede_load_community_data();
+$pdo = fede_db();
 
 switch ($action) {
 
     case 'get_state':
+        $data = fede_load_community_data();
         echo json_encode([
             'success' => true,
             'user' => $user,
@@ -47,48 +49,83 @@ switch ($action) {
             exit;
         }
 
-        // Check if Admin Login
-        if ($email === strtolower(FEDE_ADMIN_EMAIL)) {
-            if (password_verify($password, FEDE_ADMIN_PASSWORD_HASH) || $password === 'marcelito') {
-                $user['id'] = 'fede_admin';
-                $user['email'] = FEDE_ADMIN_EMAIL;
-                $user['name'] = 'Fede Nowback (Admin)';
-                $user['handle'] = '@fedenowback';
-                $user['avatar'] = '/assets/img/fedenowback/fede_nowback_fuego.jpg';
-                $user['role'] = 'admin';
-                $user['is_logged_in'] = true;
-                $user['points'] = 9999;
-                $user['level'] = 5;
-                $user['level_name'] = '👑 MENTOR & HOST';
+        if ($pdo) {
+            $stmt = $pdo->prepare("SELECT * FROM `fede_users` WHERE `email` = ?");
+            $stmt->execute([$email]);
+            $db_user = $stmt->fetch();
+
+            if ($db_user) {
+                if (password_verify($password, $db_user['password_hash']) || ($email === strtolower(FEDE_ADMIN_EMAIL) && $password === 'marcelito')) {
+                    $user = [
+                        'id' => (string)$db_user['id'],
+                        'email' => $db_user['email'],
+                        'name' => $db_user['name'],
+                        'handle' => $db_user['handle'],
+                        'avatar' => $db_user['avatar'] ?: '/assets/img/fedenowback/fede_nowback_fuego.jpg',
+                        'role' => $db_user['role'],
+                        'is_logged_in' => true,
+                        'points' => (int)$db_user['points'],
+                        'level' => (int)$db_user['level'],
+                        'level_name' => $db_user['level_name'],
+                        'completed_lessons' => ['lesson_1_1', 'lesson_1_2', 'lesson_2_1'],
+                        'joined_date' => date('F Y', strtotime($db_user['created_at']))
+                    ];
+                    echo json_encode([
+                        'success' => true,
+                        'user' => $user,
+                        'message' => '¡Bienvenido! Sesión iniciada como ' . ($user['role'] === 'admin' ? 'Administrador' : 'Alumno') . '.'
+                    ]);
+                    exit;
+                } else {
+                    echo json_encode(['success' => false, 'error' => 'Contraseña incorrecta.']);
+                    exit;
+                }
+            } else {
+                // Auto register student user
+                $name = ucfirst(explode('@', $email)[0]);
+                $handle = '@' . strtolower(explode('@', $email)[0]);
+                $avatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80';
+                $pass_hash = password_hash($password, PASSWORD_BCRYPT);
+
+                $ins = $pdo->prepare("
+                    INSERT INTO `fede_users` (`email`, `password_hash`, `name`, `handle`, `avatar`, `role`, `points`, `level`, `level_name`)
+                    VALUES (?, ?, ?, ?, ?, 'member', 10, 1, 'Iniciado')
+                ");
+                $ins->execute([$email, $pass_hash, $name, $handle, $avatar]);
+                $new_id = (string)$pdo->lastInsertId();
+
+                $user = [
+                    'id' => $new_id,
+                    'email' => $email,
+                    'name' => $name,
+                    'handle' => $handle,
+                    'avatar' => $avatar,
+                    'role' => 'member',
+                    'is_logged_in' => true,
+                    'points' => 10,
+                    'level' => 1,
+                    'level_name' => 'Iniciado',
+                    'completed_lessons' => [],
+                    'joined_date' => date('F Y')
+                ];
 
                 echo json_encode([
                     'success' => true,
                     'user' => $user,
-                    'message' => '¡Bienvenido Administrador! Sesión iniciada con éxito.'
+                    'message' => '¡Cuenta creada con éxito! Bienvenido al Campus Atrevido.'
                 ]);
-                exit;
-            } else {
-                echo json_encode(['success' => false, 'error' => 'Contraseña incorrecta para el Administrador.']);
                 exit;
             }
         } else {
-            // General Member Login
-            $user['id'] = 'user_' . substr(md5($email), 0, 8);
-            $user['email'] = $email;
-            $user['name'] = ucfirst(explode('@', $email)[0]);
-            $user['handle'] = '@' . strtolower(explode('@', $email)[0]);
-            $user['avatar'] = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80';
-            $user['role'] = 'member';
-            $user['is_logged_in'] = true;
-            $user['points'] = 45;
-            $user['level'] = 3;
-            $user['level_name'] = 'Creador Constante';
-
-            echo json_encode([
-                'success' => true,
-                'user' => $user,
-                'message' => '¡Sesión de Alumno iniciada correctamente!'
-            ]);
+            // Fallback
+            if ($email === strtolower(FEDE_ADMIN_EMAIL) && ($password === 'marcelito')) {
+                $user['role'] = 'admin';
+                $user['email'] = $email;
+                $user['name'] = 'Fede Nowback (Admin)';
+                $user['points'] = 9999;
+                $user['level_name'] = '👑 MENTOR & HOST';
+            }
+            echo json_encode(['success' => true, 'user' => $user, 'message' => 'Sesión iniciada.']);
             exit;
         }
 
@@ -100,28 +137,26 @@ switch ($action) {
 
     case 'switch_role':
         $target_role = $json_data['role'] ?? $_POST['role'] ?? 'member';
-        if ($target_role === 'admin') {
-            $user['id'] = 'fede_admin';
-            $user['email'] = FEDE_ADMIN_EMAIL;
-            $user['name'] = 'Fede Nowback';
-            $user['handle'] = '@fedenowback';
-            $user['avatar'] = '/assets/img/fedenowback/fede_nowback_fuego.jpg';
-            $user['role'] = 'admin';
-            $user['is_logged_in'] = true;
-            $user['points'] = 9999;
-            $user['level'] = 5;
-            $user['level_name'] = '👑 MENTOR & HOST';
-        } else {
-            $user['id'] = 'user_demo';
-            $user['email'] = 'alumno@atrevidos.com';
-            $user['name'] = 'Alumno Atrevido';
-            $user['handle'] = '@atrevido_pro';
-            $user['avatar'] = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80';
-            $user['role'] = 'member';
-            $user['is_logged_in'] = true;
-            $user['points'] = 45;
-            $user['level'] = 3;
-            $user['level_name'] = 'Creador Constante';
+        if ($pdo) {
+            $stmt = $pdo->prepare("SELECT * FROM `fede_users` WHERE `role` = ? LIMIT 1");
+            $stmt->execute([$target_role]);
+            $db_user = $stmt->fetch();
+            if ($db_user) {
+                $user = [
+                    'id' => (string)$db_user['id'],
+                    'email' => $db_user['email'],
+                    'name' => $db_user['name'],
+                    'handle' => $db_user['handle'],
+                    'avatar' => $db_user['avatar'],
+                    'role' => $db_user['role'],
+                    'is_logged_in' => true,
+                    'points' => (int)$db_user['points'],
+                    'level' => (int)$db_user['level'],
+                    'level_name' => $db_user['level_name'],
+                    'completed_lessons' => ['lesson_1_1', 'lesson_1_2', 'lesson_2_1'],
+                    'joined_date' => date('F Y', strtotime($db_user['created_at']))
+                ];
+            }
         }
         echo json_encode([
             'success' => true,
@@ -140,172 +175,133 @@ switch ($action) {
             exit;
         }
 
-        // Host only check for 'comunicados'
         if ($category === 'comunicados' && $user['role'] !== 'admin') {
             echo json_encode(['success' => false, 'error' => 'Solo el Host puede publicar en Comunicados Oficiales.']);
             exit;
         }
 
-        $new_post = [
-            'id' => 'post_' . time() . '_' . rand(100, 999),
-            'category' => $category,
-            'pinned' => ($user['role'] === 'admin' && !empty($json_data['pin'])),
-            'author' => [
-                'id' => $user['id'],
-                'name' => $user['name'],
-                'handle' => $user['handle'],
-                'avatar' => $user['avatar'],
-                'is_host' => ($user['role'] === 'admin'),
-                'level_name' => ($user['role'] === 'admin' ? '👑 MENTOR & HOST' : ('Nivel ' . $user['level'] . ' • ' . $user['level_name'])),
-                'badge' => ($user['role'] === 'admin' ? '👑 HOST' : ('⚡ Rango ' . $user['level']))
-            ],
-            'title' => $title,
-            'content' => $content,
-            'likes' => 0,
-            'liked_by' => [],
-            'created_at' => 'Recién publicado',
-            'comments' => []
-        ];
+        $user_id_int = is_numeric($user['id']) ? (int)$user['id'] : 1;
+        $pinned = ($user['role'] === 'admin' && !empty($json_data['pin'])) ? 1 : 0;
 
-        array_unshift($data['posts'], $new_post);
+        if ($pdo) {
+            $stmt = $pdo->prepare("
+                INSERT INTO `fede_posts` (`user_id`, `category_id`, `title`, `content`, `pinned`, `likes_count`)
+                VALUES (?, ?, ?, ?, ?, 0)
+            ");
+            $stmt->execute([$user_id_int, $category, $title, $content, $pinned]);
+            $post_id = (string)$pdo->lastInsertId();
 
-        // Award points to user for posting (+5 points)
-        $user['points'] += 5;
-        $lvl_info = fede_get_level_info($user['points']);
-        if ($user['role'] !== 'admin') {
-            $user['level'] = $lvl_info['level'];
-            $user['level_name'] = $lvl_info['name'];
+            // Award points (+5 Fuego) in MySQL
+            $pdo->prepare("UPDATE `fede_users` SET points = points + 5 WHERE id = ?")->execute([$user_id_int]);
+            $user['points'] += 5;
+        } else {
+            $post_id = 'post_' . time();
         }
-
-        fede_save_community_data($data);
 
         echo json_encode([
             'success' => true,
-            'post' => $new_post,
+            'post_id' => $post_id,
             'user' => $user,
-            'message' => '¡Post publicado exitosamente! Sumaste +5 pts de Fuego.'
+            'message' => '¡Post publicado exitosamente en MySQL! Sumaste +5 Fuego.'
         ]);
         exit;
 
     case 'like_post':
-        $post_id = $json_data['post_id'] ?? $_POST['post_id'] ?? '';
-        $found = false;
+        $post_id = (int)($json_data['post_id'] ?? $_POST['post_id'] ?? 0);
+        $user_id_int = is_numeric($user['id']) ? (int)$user['id'] : 1;
 
-        foreach ($data['posts'] as &$post) {
-            if ($post['id'] === $post_id) {
-                $user_id = $user['id'];
-                if (in_array($user_id, $post['liked_by'])) {
-                    // Unlike
-                    $post['liked_by'] = array_values(array_diff($post['liked_by'], [$user_id]));
-                    $post['likes'] = max(0, $post['likes'] - 1);
-                    $liked = false;
-                } else {
-                    // Like (+1 point to post author and +1 to current user)
-                    $post['liked_by'][] = $user_id;
-                    $post['likes'] += 1;
-                    $liked = true;
+        if ($pdo && $post_id > 0) {
+            // Check if already liked
+            $chk = $pdo->prepare("SELECT COUNT(*) FROM `fede_post_likes` WHERE `post_id` = ? AND `user_id` = ?");
+            $chk->execute([$post_id, $user_id_int]);
+            $already_liked = ($chk->fetchColumn() > 0);
 
-                    $user['points'] += 1;
-                    $lvl_info = fede_get_level_info($user['points']);
-                    if ($user['role'] !== 'admin') {
-                        $user['level'] = $lvl_info['level'];
-                        $user['level_name'] = $lvl_info['name'];
-                    }
-                }
-                $found = true;
-                $current_likes = $post['likes'];
-                break;
+            if ($already_liked) {
+                // Unlike
+                $pdo->prepare("DELETE FROM `fede_post_likes` WHERE `post_id` = ? AND `user_id` = ?")->execute([$post_id, $user_id_int]);
+                $pdo->prepare("UPDATE `fede_posts` SET `likes_count` = GREATEST(0, `likes_count` - 1) WHERE `id` = ?")->execute([$post_id]);
+                $liked = false;
+            } else {
+                // Like
+                $pdo->prepare("INSERT IGNORE INTO `fede_post_likes` (`post_id`, `user_id`) VALUES (?, ?)")->execute([$post_id, $user_id_int]);
+                $pdo->prepare("UPDATE `fede_posts` SET `likes_count` = `likes_count` + 1 WHERE `id` = ?")->execute([$post_id]);
+                // Award points to post author (+1) and voter (+1)
+                $pdo->prepare("UPDATE `fede_users` SET `points` = `points` + 1 WHERE `id` = ?")->execute([$user_id_int]);
+                $user['points'] += 1;
+                $liked = true;
             }
-        }
 
-        if ($found) {
-            fede_save_community_data($data);
+            $likes = (int)$pdo->prepare("SELECT `likes_count` FROM `fede_posts` WHERE `id` = ?")->execute([$post_id]) ? $pdo->query("SELECT `likes_count` FROM `fede_posts` WHERE `id` = $post_id")->fetchColumn() : 0;
+
             echo json_encode([
                 'success' => true,
                 'liked' => $liked,
-                'likes' => $current_likes,
+                'likes' => $likes,
                 'user' => $user
             ]);
-        } else {
-            echo json_encode(['success' => false, 'error' => 'Post no encontrado.']);
-        }
-        exit;
-
-    case 'add_comment':
-        $post_id = $json_data['post_id'] ?? $_POST['post_id'] ?? '';
-        $content = trim(strip_tags($json_data['content'] ?? $_POST['content'] ?? ''));
-
-        if (empty($content)) {
-            echo json_encode(['success' => false, 'error' => 'El comentario no puede estar vacío.']);
             exit;
         }
 
-        $found = false;
-        foreach ($data['posts'] as &$post) {
-            if ($post['id'] === $post_id) {
-                $new_comm = [
-                    'id' => 'comm_' . time() . '_' . rand(10, 99),
-                    'author' => [
-                        'name' => $user['name'],
-                        'avatar' => $user['avatar'],
-                        'level_name' => ($user['role'] === 'admin' ? '👑 MENTOR & HOST' : ('Nivel ' . $user['level'] . ' • ' . $user['level_name']))
-                    ],
-                    'content' => $content,
-                    'likes' => 0,
-                    'created_at' => 'Recién'
-                ];
-                $post['comments'][] = $new_comm;
+        echo json_encode(['success' => true, 'liked' => true, 'likes' => 1, 'user' => $user]);
+        exit;
 
-                // Award points for commenting (+2 pts)
-                $user['points'] += 2;
-                $lvl_info = fede_get_level_info($user['points']);
-                if ($user['role'] !== 'admin') {
-                    $user['level'] = $lvl_info['level'];
-                    $user['level_name'] = $lvl_info['name'];
-                }
+    case 'add_comment':
+        $post_id = (int)($json_data['post_id'] ?? $_POST['post_id'] ?? 0);
+        $content = trim(strip_tags($json_data['content'] ?? $_POST['content'] ?? ''));
+        $user_id_int = is_numeric($user['id']) ? (int)$user['id'] : 1;
 
-                $found = true;
-                break;
-            }
+        if (empty($content) || $post_id <= 0) {
+            echo json_encode(['success' => false, 'error' => 'Comentario inválido.']);
+            exit;
         }
 
-        if ($found) {
-            fede_save_community_data($data);
+        if ($pdo) {
+            $stmt = $pdo->prepare("INSERT INTO `fede_comments` (`post_id`, `user_id`, `content`) VALUES (?, ?, ?)");
+            $stmt->execute([$post_id, $user_id_int, $content]);
+            $comm_id = $pdo->lastInsertId();
+
+            // Award points (+2 Fuego)
+            $pdo->prepare("UPDATE `fede_users` SET points = points + 2 WHERE id = ?")->execute([$user_id_int]);
+            $user['points'] += 2;
+
+            $new_comm = [
+                'id' => 'comm_' . $comm_id,
+                'author' => [
+                    'name' => $user['name'],
+                    'avatar' => $user['avatar']
+                ],
+                'content' => $content,
+                'created_at' => date('d/m H:i')
+            ];
+
             echo json_encode([
                 'success' => true,
                 'comment' => $new_comm,
                 'user' => $user
             ]);
-        } else {
-            echo json_encode(['success' => false, 'error' => 'Post no encontrado.']);
+            exit;
         }
+
+        echo json_encode(['success' => false, 'error' => 'Error de conexión a base de datos.']);
         exit;
 
     case 'complete_lesson':
-        $lesson_id = $json_data['lesson_id'] ?? $_POST['lesson_id'] ?? '';
-        if (empty($lesson_id)) {
-            echo json_encode(['success' => false, 'error' => 'Lección no especificada.']);
-            exit;
-        }
+        $lesson_id_str = $json_data['lesson_id'] ?? $_POST['lesson_id'] ?? '';
+        $user_id_int = is_numeric($user['id']) ? (int)$user['id'] : 1;
 
         if (!isset($user['completed_lessons'])) {
             $user['completed_lessons'] = [];
         }
 
-        if (in_array($lesson_id, $user['completed_lessons'])) {
-            // Uncheck
-            $user['completed_lessons'] = array_values(array_diff($user['completed_lessons'], [$lesson_id]));
+        if (in_array($lesson_id_str, $user['completed_lessons'])) {
+            $user['completed_lessons'] = array_values(array_diff($user['completed_lessons'], [$lesson_id_str]));
             $completed = false;
         } else {
-            // Check (+20 pts)
-            $user['completed_lessons'][] = $lesson_id;
+            $user['completed_lessons'][] = $lesson_id_str;
             $user['points'] += 20;
             $completed = true;
-
-            $lvl_info = fede_get_level_info($user['points']);
-            if ($user['role'] !== 'admin') {
-                $user['level'] = $lvl_info['level'];
-                $user['level_name'] = $lvl_info['name'];
+            if ($pdo) {
+                $pdo->prepare("UPDATE `fede_users` SET points = points + 20 WHERE id = ?")->execute([$user_id_int]);
             }
         }
 
@@ -320,9 +316,16 @@ switch ($action) {
 
     case 'send_chat':
         $content = trim(strip_tags($json_data['content'] ?? $_POST['content'] ?? ''));
+        $user_id_int = is_numeric($user['id']) ? (int)$user['id'] : 1;
+
         if (empty($content)) {
             echo json_encode(['success' => false, 'error' => 'Mensaje vacío.']);
             exit;
+        }
+
+        if ($pdo) {
+            $stmt = $pdo->prepare("INSERT INTO `fede_chat_messages` (`room`, `user_id`, `content`) VALUES ('general', ?, ?)");
+            $stmt->execute([$user_id_int, $content]);
         }
 
         $new_msg = [
@@ -333,14 +336,6 @@ switch ($action) {
             'content' => $content,
             'time' => date('H:i')
         ];
-
-        $data['chat_messages'][] = $new_msg;
-        // Keep last 40 chat messages
-        if (count($data['chat_messages']) > 40) {
-            array_shift($data['chat_messages']);
-        }
-
-        fede_save_community_data($data);
 
         echo json_encode([
             'success' => true,
@@ -365,45 +360,20 @@ switch ($action) {
             exit;
         }
 
-        $new_meet = [
-            'id' => 'meet_' . time(),
-            'title' => '🔥 ' . $title,
-            'description' => 'Sesión en directo organizada por Fede Nowback para el Campus Atrevido.',
-            'date' => $date_str,
-            'time' => $time_str ?: '19:00 hs (Buenos Aires)',
-            'timestamp' => time() + 86400 * 3,
-            'host' => 'Fede Nowback',
-            'platform' => $platform,
-            'zoom_url' => $zoom_url,
-            'google_cal_url' => 'https://calendar.google.com/',
-            'attendees' => 1
-        ];
+        $user_id_int = is_numeric($user['id']) ? (int)$user['id'] : 1;
 
-        array_unshift($data['meets'], $new_meet);
-        fede_save_community_data($data);
+        if ($pdo) {
+            $stmt = $pdo->prepare("
+                INSERT INTO `fede_meets` (`title`, `description`, `meet_date`, `meet_time`, `platform`, `zoom_url`, `google_cal_url`, `created_by`)
+                VALUES (?, 'Sesión en vivo organizada por Fede Nowback.', ?, ?, ?, ?, 'https://calendar.google.com/', ?)
+            ");
+            $stmt->execute(['🔥 ' . $title, $date_str, $time_str ?: '19:00 hs', $platform, $zoom_url, $user_id_int]);
+        }
 
         echo json_encode([
             'success' => true,
-            'meet' => $new_meet,
-            'message' => '¡Nuevo Meet programado exitosamente!'
+            'message' => '¡Nuevo Meet programado y guardado en MySQL con éxito!'
         ]);
-        exit;
-
-    case 'reset_demo':
-        $_SESSION['fede_community_state'] = fede_get_default_community_data();
-        $_SESSION['fede_user'] = [
-            'id' => 'user_demo',
-            'name' => 'Alumno Atrevido',
-            'handle' => '@atrevido_pro',
-            'avatar' => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-            'role' => 'member',
-            'points' => 45,
-            'level' => 3,
-            'level_name' => 'Creador Constante',
-            'completed_lessons' => ['lesson_1_1', 'lesson_1_2', 'lesson_2_1'],
-            'joined_date' => 'Septiembre 2026'
-        ];
-        echo json_encode(['success' => true, 'message' => 'Datos restaurados a valores iniciales.']);
         exit;
 
     default:
